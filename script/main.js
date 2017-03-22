@@ -1,7 +1,6 @@
 
 const modulePattern = (function(){
 
-//showAllMovies: (moviesArray) => 
 return {
 
 getAlcoholFree: function(){
@@ -29,30 +28,52 @@ getUserInput: function (e) {
 	e.preventDefault();
 	console.log("claaack")
 
-	if(spicy = document.getElementById("spicy").checked){
-		console.log("checked spicy");
-        modulePattern.getFood(spicy);
-    }
+var checked = document.getElementsByClassName("checkIt");
+var checkedResult = [];
+ 
+console.log(checked)
 
-    else{
-        console.log("Nohting spicy thanks");
-    }
-    if(chocolate = document.getElementById("chocolate").checked){
-    			console.log("checked chocolate");
-         modulePattern.getFood(chocolate);
-    }
+	for(var i = 0; i < 3; i++){
 
-    else{
-        console.log("No chocolate thanks");
-    }
-    if(citrus = document.getElementById("citrus").checked){
-    			console.log("checked citrus");
-         modulePattern.getFood(citrus);
-    }
+	if(checked[i].checked == true){
 
-    else{
-        console.log("Nothing citrusy");
-    }
+		checkedResult = checked[i].value;
+					console.log(checked[i].value);
+	 
+	}
+}
+ 
+modulePattern.getFood(checkedResult);
+
+
+
+
+
+
+	// if(spicy = document.getElementById("spicy").checked){
+	// 	console.log("checked spicy");
+ //        modulePattern.getFood(spicy);
+ //    }
+
+ //    else{
+ //        console.log("Nohting spicy thanks");
+ //    }
+ //    if(chocolate = document.getElementById("chocolate").checked){
+ //    			console.log("checked chocolate");
+ //         modulePattern.getFood(chocolate);
+ //    }
+
+ //    else{
+ //        console.log("No chocolate thanks");
+ //    }
+ //    if(citrus = document.getElementById("citrus").checked){
+ //    			console.log("checked citrus");
+ //         modulePattern.getFood(citrus);
+ //    }
+
+ //    else{
+ //        console.log("Nothing citrusy");
+ //    }
    
 },
 
@@ -66,21 +87,18 @@ getFood: function(spicy, chocolate, citrus){
 
 	// e.preventDefault();
 	console.log("Click")
-	console.log(spicy)
-		console.log(chocolate)
-			console.log(citrus)
 
     // var spicy =document.getElementById("spicy").value;
     // var chocolate =document.getElementById("chocolate").value;
     // var citrus =document.getElementById("citrus").value;
 
 
-if(spicy === true){
-	console.log(spicy)
-var addSpicy =document.getElementById("spicy").value;
+if(spicy === spicy){
+ 
+
 var dataSpicy = [];
 
-$.get('https://api.punkapi.com/v2/beers?food='+addSpicy, (response) => { 
+$.get('https://api.punkapi.com/v2/beers?food='+spicy, (response) => { 
     dataSpicy = response;
     //Only in the callback are we sure that data has been saved,
     //the anonym function will run on success, when the response
@@ -97,11 +115,11 @@ $.get('https://api.punkapi.com/v2/beers?food='+addSpicy, (response) => {
 else{
 	console.log("No Spicy")
 }
-if(chocolate === true){
-		console.log(chocolate)
-var addChocolate =document.getElementById("chocolate").value;
+if(chocolate === chocolate){
+	 
+ 
 var dataChocolate = [];
-$.get('https://api.punkapi.com/v2/beers?food='+addChocolate, (response) => { 
+$.get('https://api.punkapi.com/v2/beers?food='+chocolate, (response) => { 
     dataChocolate = response;
     //Only in the callback are we sure that data has been saved,
     //the anonym function will run on success, when the response
@@ -119,11 +137,11 @@ else{
 	console.log("No Chocolate")
 }
 
-if(citrus === true){
-		console.log(citrus)
-	var addCitrus =document.getElementById("citrus").value;
+if(citrus === citrus){
+ 
+ 
 var dataCitrus = [];
-$.get('https://api.punkapi.com/v2/beers?food='+addCitrus, (response) => { 
+$.get('https://api.punkapi.com/v2/beers?food='+citrus, (response) => { 
     dataCitrus = response;
     //Only in the callback are we sure that data has been saved,
     //the anonym function will run on success, when the response
