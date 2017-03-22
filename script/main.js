@@ -37,13 +37,14 @@ console.log(checked)
 
 	if(checked[i].checked == true){
 
-		checkedResult = checked[i].value;
-					console.log(checked[i].value);
+			checkedResult.push(checked[i].value)		
+			console.log(checkedResult);
 	 
 	}
 }
  
 modulePattern.getFood(checkedResult);
+ 
 
 
 
@@ -83,91 +84,123 @@ document.getElementById('alcoholFree-btn').addEventListener('click', modulePatte
 },
 
 
-getFood: function(spicy, chocolate, citrus){
+getFood: function(checkedResult){
 
 	// e.preventDefault();
 	console.log("Click")
-
-    // var spicy =document.getElementById("spicy").value;
-    // var chocolate =document.getElementById("chocolate").value;
-    // var citrus =document.getElementById("citrus").value;
+console.log(checkedResult)
 
 
-if(spicy === spicy){
+
+    checkedResult.forEach(function(element) {
+    console.log(element)
+    
  
 
-var dataSpicy = [];
+if(element === "spicy"){
 
-$.get('https://api.punkapi.com/v2/beers?food='+spicy, (response) => { 
+// var dataSpicy = [];
+
+$.get('https://api.punkapi.com/v2/beers?food='+"spicy", (response) => { 
+    var dataSpicy = [];
     dataSpicy = response;
     //Only in the callback are we sure that data has been saved,
     //the anonym function will run on success, when the response
     //has returned
-
-
     console.log(dataSpicy);
-    modulePattern.putInDom(dataSpicy);
+     modulePattern.putSpicyInDom(dataSpicy);
 
 }).catch(function(error){
 	console.log("Error");
 });
 }
-else{
-	console.log("No Spicy")
-}
-if(chocolate === chocolate){
-	 
- 
-var dataChocolate = [];
-$.get('https://api.punkapi.com/v2/beers?food='+chocolate, (response) => { 
+
+if(element === "chocolate") {
+//  console.log("sallad")
+// var dataChocolate = [];
+$.get('https://api.punkapi.com/v2/beers?food='+"chocolate", (response) => { 
+    var dataChocolate = [];
     dataChocolate = response;
     //Only in the callback are we sure that data has been saved,
     //the anonym function will run on success, when the response
     //has returned
-
-
     console.log(dataChocolate);
-    modulePattern.putInDom(dataChocolate);
-
+     modulePattern.putChocolateInDom(dataChocolate);
 }).catch(function(error){
 	console.log("Error");
 });
-}
-else{
-	console.log("No Chocolate")
-}
 
-if(citrus === citrus){
- 
- 
-var dataCitrus = [];
-$.get('https://api.punkapi.com/v2/beers?food='+citrus, (response) => { 
+}
+if(element === "citrus"){
+// var dataCitrus = [];
+$.get('https://api.punkapi.com/v2/beers?food='+"citrus", (response) => { 
+    var dataCitrus = [];
     dataCitrus = response;
     //Only in the callback are we sure that data has been saved,
     //the anonym function will run on success, when the response
     //has returned
-
-
     console.log(dataCitrus);
-    modulePattern.putInDom(dataCitrus);
+    modulePattern.putCitrusInDom(dataCitrus);
+
+
 
 }).catch(function(error){
 	console.log("Error");
 });
 }
-else{
-	console.log("No Citrus")
-}
+
+
+ 
+
+  //if
+ 
+
+
+//} for-loopen
+
+}); //forEach
 
 },
 
-
-
-
-
-
-putInDom: (dataSpicy) => {
+putChocolateInDom: (dataChocolate) => {
 	
+ 
+	console.log("baaaah")
+	if(dataChocolate == ''){
+		 console.log("Errorssss")
+		let error = document.getElementById("errorMsg");
+
+            var showError = `<li>Unfortunately we did not find any match. Change your search and try again.</li>`;
+            errorMsg.innerHTML = showError;   	
+	}
+	else{
+		let beer = document.getElementById("chocolateList");
+        let showHTML = "";
+            for (var i = 0; i < dataChocolate.length ;i++){
+                showHTML += 
+                `
+                <div class="dom-wrapper">
+                	<div class="dom-left">
+                		<img src="${dataChocolate[i].image_url}" class="beer-img"><br>
+                	</div>
+				<div class="dom-right">
+	                <h4>${dataChocolate[i].name}</h4>
+	                Alcohol: ${dataChocolate[i].abv}%<br>
+	                Food pairing: ${dataChocolate[i].food_pairing.join(", ")} <br>
+	                Description: ${dataChocolate[i].description}
+                </div>
+                </div>`;
+            chocolateList.innerHTML = showHTML;
+        	}
+ 		
+ 
+		}
+	},
+
+putSpicyInDom: (dataSpicy) => {
+	
+
+	console.log("baaaah")
 	if(dataSpicy == ''){
 		 console.log("Errorssss")
 		let error = document.getElementById("errorMsg");
@@ -176,7 +209,7 @@ putInDom: (dataSpicy) => {
             errorMsg.innerHTML = showError;   	
 	}
 	else{
-		let beer = document.getElementById("beerList");
+		let beer = document.getElementById("spicyList");
         let showHTML = "";
             for (var i = 0; i < dataSpicy.length ;i++){
                 showHTML += 
@@ -192,7 +225,45 @@ putInDom: (dataSpicy) => {
 	                Description: ${dataSpicy[i].description}
                 </div>
                 </div>`;
-            beerList.innerHTML = showHTML;
+            spicyList.innerHTML = showHTML;
+        	}
+ 		
+ 
+		}
+	},
+
+
+
+
+putCitrusInDom: (dataCitrus) => {
+	
+ 
+	console.log("baaaah")
+	if(dataCitrus == ''){
+		 console.log("Errorssss")
+		let error = document.getElementById("errorMsg");
+
+            var showError = `<li>Unfortunately we did not find any match. Change your search and try again.</li>`;
+            errorMsg.innerHTML = showError;   	
+	}
+	else{
+		let beer = document.getElementById("citrusList");
+        let showHTML = "";
+            for (var i = 0; i < dataCitrus.length ;i++){
+                showHTML += 
+                `
+                <div class="dom-wrapper">
+                	<div class="dom-left">
+                		<img src="${dataCitrus[i].image_url}" class="beer-img"><br>
+                	</div>
+				<div class="dom-right">
+	                <h4>${dataCitrus[i].name}</h4>
+	                Alcohol: ${dataCitrus[i].abv}%<br>
+	                Food pairing: ${dataCitrus[i].food_pairing.join(", ")} <br>
+	                Description: ${dataCitrus[i].description}
+                </div>
+                </div>`;
+            citrusList.innerHTML = showHTML;
         	}
  		
  
@@ -203,5 +274,6 @@ putInDom: (dataSpicy) => {
 })(); 
  
 modulePattern.addEvent();
+// console.log(modulePattern.getFood());
 
 // deleteAlbumAPI();
