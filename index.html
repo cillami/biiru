@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+  <title>AJAX and BEER</title>
+  <link rel="stylesheet"
+      href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+<link rel="stylesheet"
+     href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+ 
+</head>
+<body>
+
+<!-- HEADER -->
+  <header class="header"><h1>BIIRU</h1><br></header>
+
+<!-- <div class="container">
+  <div class="row">
+        <div class="col-md-12">
+        <h2>Custom search field</h2>
+            <div id="custom-search-input">
+                <div class="input-group col-md-12">
+                    <input type="text" class="form-control input-lg" placeholder="Buscar" />
+                    <span class="input-group-btn">
+                        <button class="btn btn-info btn-lg" type="button">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+  </div>
+</div> -->
+
+
+
+<!-- Container -->
+  <div class="container">
+
+<!-- Row -->    
+    <div class="row">
+
+<!-- Left col -->
+      <div class="col-md-4">
+
+
+        <div class=buttons>
+          <button id="alcoholFree-btn" class="all-btn">Alcohol Free</button>
+          <button id="darkBeer-btn" class="all-btn">....</button>
+          <button id="lightBeer-btn" class="all-btn">....</button>
+        </div>
+
+ <div class="checkboxes">
+  <p>Find a beer that will match your choice of flavor</p>
+  <form>
+    <label class="checkbox-inline">
+      <input type="checkbox" id="spicy" value="spicy">Spicy
+    </label>
+    <label class="checkbox-inline">
+      <input type="checkbox" id="chocolate" value="chocolate">Chocolate
+    </label>
+    <label class="checkbox-inline">
+      <input type="checkbox" id="citrus" value="citrus">Citrus
+    </label><br><br>
+    <button id="foodBeer-btn" class="all-btn">Match a beer</button>
+  </form>
+  </div>
+ 
+      
+
+      </div>
+<!-- Right col -->
+      <div class="col-md-8">
+        <div id="beerList" class="d-flex flex-column"></div>
+        <div id="errorMsg"></div>
+      </div>
+<!-- End row -->     
+    </div>
+
+<!-- End container -->   
+</div>
+
+<script src="script/main.js"></script>  
+</body>
+</html>
