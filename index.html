@@ -18,24 +18,6 @@
 <!-- HEADER -->
   <header class="header"><h1>BIIRU</h1><br></header>
 
-<!-- <div class="container">
-  <div class="row">
-        <div class="col-md-12">
-        <h2>Custom search field</h2>
-            <div id="custom-search-input">
-                <div class="input-group col-md-12">
-                    <input type="text" class="form-control input-lg" placeholder="Buscar" />
-                    <span class="input-group-btn">
-                        <button class="btn btn-info btn-lg" type="button">
-                            <i class="glyphicon glyphicon-search"></i>
-                        </button>
-                    </span>
-                </div>
-            </div>
-        </div>
-  </div>
-</div> -->
-
 
 
 <!-- Container -->
@@ -45,17 +27,46 @@
     <div class="row">
 
 <!-- Left col -->
-      <div class="col-md-4">
+      <div class="col-md-3">
 
-
+ <h1>BrewDog Beers</h1>
         <div class=buttons>
-          <button id="alcoholFree-btn" class="all-btn">Alcohol Free</button>
-          <button id="darkBeer-btn" class="all-btn">....</button>
-          <button id="lightBeer-btn" class="all-btn">....</button>
+          <button id="lightBeers-btn" class="all-btn">Light beers</button>
+          <button id="darkBeers-btn" class="all-btn">Dark beers</button> 
+          <button id="beers-btn" class="all-btn">Show beers</button>        
+          <button id="" class="all-btn">........</button>
+          <button id="" class="all-btn">........</button>
+
+       <br><br>
+              Choose your beer 
+              <select id="getAlcBeer">
+                <option value="">Choose Beer</option>
+                <option value="abv_gt=0&abv_lt=1">Alcohol free</option>
+                <option value="abv_gt=2&abv_lt=3">2%</option>
+                <option value="abv_gt=3&abv_lt=4">3%</option>
+                <option value="abv_gt=4&abv_lt=5">4%</option>
+                <option value="abv_gt=5&abv_lt=6">5%</option>
+                <option value="abv_gt=6&abv_lt=7">6%</option>
+                <option value="abv_gt=7&abv_lt=8">7%</option>
+                <option value="abv_gt=8&abv_lt=9">8%</option>                
+                <option value="abv_gt=9&abv_lt=10">9%</option>
+                <option value="abv_gt=10&abv_lt=11">10%</option>
+                <option value="abv_gt=11&abv_lt=12">11%</option>
+                <option value="abv_gt=12&abv_lt=13">12%</option>                
+                <option value="abv_gt=13&abv_lt=14">13%</option>
+                <option value="abv_gt=14&abv_lt=15">14%</option>
+                <option value="abv_gt=15&abv_lt=16">15%</option>
+                <option value="abv_gt=16&abv_lt=17">16%</option>
+                <option value="abv_gt=17&abv_lt=18">17%</option>
+                <option value="abv_gt=18&abv_lt=19">18%</option>
+              </select>
+               
         </div>
 
  <div class="checkboxes">
-  <p>Find a beer that will match your choice of flavor</p>
+ <h1>Time to eat?</h1>
+  <p>Find a beer that will match your choice of flavor. <br>
+  Pick the ones you like: </p>
   <form>
     <label class="checkbox-inline">
       <input type="checkbox" class="checkIt" value="spicy">Spicy
@@ -74,7 +85,8 @@
 
       </div>
 <!-- Right col -->
-      <div class="col-md-8">
+      <div class="col-md-7">
+        <div id="beerList" class="d-flex flex-column"></div>
         <div id="spicyList" class="d-flex flex-column"></div>
         <div id="chocolateList" class="d-flex flex-column"></div>
         <div id="citrusList" class="d-flex flex-column"></div>
