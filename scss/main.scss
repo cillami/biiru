@@ -1,6 +1,5 @@
 
 
-
 body{
   display: flex;
   align-items: center;
@@ -29,7 +28,8 @@ body{
 
 .checkboxes{
   margin-top:2rem;
-  padding-bottom:4rem;
+padding:0.5rem;
+border: 1px solid black;
 }
 
 
@@ -59,28 +59,63 @@ body{
 /*  position:fixed !important;*/
 }
 .beer-img{
-  width: 2.8rem;
+  width: 3rem;
+  padding-left:2rem;
 }
 
+.systemet{
+
+  padding-top: 2rem;
+}
+.systemet-img{
+  width: 8rem;
+  padding: 1rem;
+}
 #beerList{
   list-style-type: none;
   margin-bottom: 1rem;
+  width: 100%;
 
 }
 #errorMsg{
   list-style-type: none;
 }
+
+#error-foodList{
+  list-style-type: none;
+  color:red;
+}
+
+.node-class{
+  padding-bottom: 1rem;
+}
+.dom-wrapper-systembolaget{
+display:flex;
+padding:1rem;
+margin: 1rem;
+border: 1px solid black;
+width:36rem;
+}
 .dom-wrapper{
 display:flex;
+padding:1rem;
+margin: 1rem;
+border: 1px solid black;
+width:40rem;
 }
 
 .dom-left{
-padding-right: 2rem;
+min-width:99px;
 margin-bottom:3rem;
 }
 
 .dom-right{
 margin-bottom:3rem;
+padding-left:1rem;
+}
+
+.selector-food{
+  margin-bottom:2.5rem;
 }
 
 /*----*/
@@ -116,3 +151,5 @@ margin-bottom:3rem;
 #custom-search-input .glyphicon-search{
     font-size: 23px;
 }*/
+
+@import "responsive";

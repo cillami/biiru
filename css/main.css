@@ -21,7 +21,8 @@ body {
 /*------CHeckboxes------*/
 .checkboxes {
   margin-top: 2rem;
-  padding-bottom: 4rem; }
+  padding: 0.5rem;
+  border: 1px solid black; }
 
 .container-fluid {
   background-color: lightgrey !important;
@@ -45,24 +46,55 @@ body {
   /*  position:fixed !important;*/ }
 
 .beer-img {
-  width: 2.8rem; }
+  width: 3rem;
+  padding-left: 2rem; }
+
+.systemet {
+  padding-top: 2rem; }
+
+.systemet-img {
+  width: 8rem;
+  padding: 1rem; }
 
 #beerList {
   list-style-type: none;
-  margin-bottom: 1rem; }
+  margin-bottom: 1rem;
+  width: 100%; }
 
 #errorMsg {
   list-style-type: none; }
 
+#error-foodList {
+  list-style-type: none;
+  color: red; }
+
+.node-class {
+  padding-bottom: 1rem; }
+
+.dom-wrapper-systembolaget {
+  display: flex;
+  padding: 1rem;
+  margin: 1rem;
+  border: 1px solid black;
+  width: 36rem; }
+
 .dom-wrapper {
-  display: flex; }
+  display: flex;
+  padding: 1rem;
+  margin: 1rem;
+  border: 1px solid black;
+  width: 40rem; }
 
 .dom-left {
-  padding-right: 2rem;
+  min-width: 99px;
   margin-bottom: 3rem; }
 
 .dom-right {
-  margin-bottom: 3rem; }
+  margin-bottom: 3rem;
+  padding-left: 1rem; }
+
+.selector-food {
+  margin-bottom: 2.5rem; }
 
 /*----*/
 /*#custom-search-input{
@@ -96,5 +128,45 @@ body {
 #custom-search-input .glyphicon-search{
     font-size: 23px;
 }*/
+@media (min-width: 1200px) {
+  .container {
+    width: 1300px !important;
+    max-width: 100% !important;
+    padding-left: 2rem !important;
+    margin-left: 0rem !important;
+    padding-right: 2rem !important;
+    margin-right: 0.1rem !important; } }
+@media (max-width: 768px) {
+  .container {
+    width: 768px !important;
+    max-width: 100% !important;
+    padding-left: 2rem !important;
+    margin-left: 0rem !important;
+    padding-right: 2rem !important;
+    margin-right: 0.1rem !important; } }
+@media (max-width: 900px) {
+  .container {
+    width: 900px !important;
+    max-width: 100% !important;
+    padding-left: 2rem !important;
+    margin-left: 0rem !important;
+    padding-right: 2rem !important;
+    margin-right: 0.1rem !important; } }
+@media (max-width: 1000px) {
+  .container {
+    width: 1000px !important;
+    max-width: 100% !important;
+    padding-left: 2rem !important;
+    margin-left: 0rem !important;
+    padding-right: 2rem !important;
+    margin-right: 0.1rem !important; } }
+@media (max-width: 1200px) {
+  .container {
+    width: 1200px !important;
+    max-width: 100% !important;
+    padding-left: 2rem !important;
+    margin-left: 0rem !important;
+    padding-right: 2rem !important;
+    margin-right: 0.1rem !important; } }
 
 /*# sourceMappingURL=main.css.map */

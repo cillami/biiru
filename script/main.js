@@ -9,7 +9,7 @@ return {
 getLightBeers: function(){
 
 var data = [];
-$.get('https://api.punkapi.com/v2/beers?ebc_lt=15', (response) => { 
+$.get('https://api.punkapi.com/v2/beers?ebc_lt=15&page=1&per_page=80', (response) => { 
     data = response;
     //Only in the callback are we sure that data has been saved,
     //the anonym function will run on success, when the response
@@ -25,7 +25,7 @@ $.get('https://api.punkapi.com/v2/beers?ebc_lt=15', (response) => {
 getDarkBeers: function(){
 
 var data = [];
-$.get('https://api.punkapi.com/v2/beers?ebc_gt=50', (response) => { 
+$.get('https://api.punkapi.com/v2/beers?ebc_gt=50&page=1&per_page=80', (response) => { 
     data = response;
     //Only in the callback are we sure that data has been saved,
     //the anonym function will run on success, when the response
@@ -38,10 +38,15 @@ $.get('https://api.punkapi.com/v2/beers?ebc_gt=50', (response) => {
 });
 },
 
-getAllBeers: function(){
+selectAllBeers: function (choice) {
+            console.log("click")
+            var getAllBeers = modulePattern.getAllBeers(choice.target.value);
+            
+         },
+getAllBeers: function(getAllBeers){
 
 var data = [];
-$.get('https://api.punkapi.com/v2/beers?page=2&per_page=80', (response) => { 
+$.get('https://api.punkapi.com/v2/beers?' + getAllBeers, (response) => { 
     data = response;
     //Only in the callback are we sure that data has been saved,
     //the anonym function will run on success, when the response
@@ -50,21 +55,26 @@ $.get('https://api.punkapi.com/v2/beers?page=2&per_page=80', (response) => {
 
     console.log(data);
     modulePattern.putBeersInDom(data);
-
+//lägg en ny get, skicka vidare till PUTINDOM
+//pil längst ned ny request
 }).catch(function(error){
 	console.log("Error");
 });
+
+
+
+
 },
 
 
-optionSelectBeers: function (choice) {
+selectBeersByAlcohol: function (choice) {
             console.log("click")
-            var getBeers = modulePattern.getUserBeers(choice.target.value);
+            var getBeers = modulePattern.getBeersByAlcohol(choice.target.value);
             
          },
 
 
-getUserBeers: function(getBeers){
+getBeersByAlcohol: function(getBeers){
 	console.log("Hihi")
 
 var data = [];
@@ -80,56 +90,16 @@ $.get('https://api.punkapi.com/v2/beers?' + getBeers, (response) => {
 });
 },
 
-// getBeers4Sort: function(data){
-
-// var checked = document.getElementsByClassName("checkIt");
-// var checkedResult = [];
- 
-// console.log(checked)
-
-// 	for(var i = 0; i < 3; i++){
-
-// 	if(checked[i].checked == true){
-
-// 			checkedResult.push(checked[i].value)		
-// 			console.log(checkedResult);
-	 
-// 	}
-// }
-
-// var hohohehe =[];
-// for (var i = 0; i < data.length; i++) {
-	
-// 	hohohehe.push(data[i]);
-
-// 	console.log(hohohehe[i].food_pairing)
-
-// 	if(hohohehe[i].food_pairing === "spicy"){
-// 		console.log("vaffaan")
-	
-// }
-
-// }
-
-// console.log(hohohehe)
-// console.log(checkedResult)
-
-// },
+selectBeersByFlavour: function (choice) {
+            console.log("click")
+            var getBeersByFlavour = modulePattern.sortBeersByFlavour(choice.target.value);
+            
+         },
 
 
-addEvent: function(){
-document.getElementById('foodBeer-btn').addEventListener('click', modulePattern.getUserInput);
-document.getElementById('lightBeers-btn').addEventListener('click', modulePattern.getLightBeers);
-document.getElementById('darkBeers-btn').addEventListener('click', modulePattern.getDarkBeers);
-document.getElementById('beers-btn').addEventListener('click', modulePattern.getAllBeers);
-document.getElementById('getAlcBeer').addEventListener('change', modulePattern.optionSelectBeers);
 
-},
+sortBeersByFlavour: function(getBeersByFlavour){
 
-
-getUserInput: function (e) {
-	e.preventDefault();
-	console.log("claaack")
 
 var checked = document.getElementsByClassName("checkIt");
 var checkedResult = [];
@@ -146,48 +116,46 @@ console.log(checked)
 	}
 }
  
-modulePattern.getFood(checkedResult);
- 
-   
-},
+if(checkedResult == ''){
+	 
 
-
-getFood: function(checkedResult){
-
-	// e.preventDefault();
-	console.log("Click")
-console.log(checkedResult)
+var node = document.createElement("LI");                // Create a <li> node
+var textnode = document.createTextNode("Please choose a flavour before continuing! (reload the page)");         // Create a text node
+node.appendChild(textnode); // Append the text to <li>
+node.setAttribute('class', 'node-class'); 
+document.getElementById("error-foodList").appendChild(node);
 
 
 
+} else {
+
+//forEach loops through the array of choices made by the user
 checkedResult.forEach(function(element) {
     console.log(element)
     
  
-
+//checks if the array contains the word spicy
 if(element === "spicy"){
 
-// var dataSpicy = [];
-
-$.get('https://api.punkapi.com/v2/beers?food='+"spicy", (response) => { 
+$.get('https://api.punkapi.com/v2/beers?page=1&per_page=80&' + getBeersByFlavour + '&food=' + "spicy", (response) => { 
     var dataSpicy = [];
     dataSpicy = response;
     //Only in the callback are we sure that data has been saved,
     //the anonym function will run on success, when the response
-    //has returned
+    //has returned   
 
-    console.log(dataSpicy);
-     modulePattern.putSpicyInDom(dataSpicy);
+modulePattern.putSpicyInDom(dataSpicy);
 
 }).catch(function(error){
 	console.log("Error");
 });
+
+
 }
 
 if(element === "chocolate") {
-//  console.log("sallad")
-// var dataChocolate = [];
-$.get('https://api.punkapi.com/v2/beers?food='+"chocolate", (response) => { 
+
+$.get('https://api.punkapi.com/v2/beers?' + getBeersByFlavour + '&food=' + "chocolate", (response) => { 
     var dataChocolate = [];
     dataChocolate = response;
     //Only in the callback are we sure that data has been saved,
@@ -200,9 +168,10 @@ $.get('https://api.punkapi.com/v2/beers?food='+"chocolate", (response) => {
 });
 
 }
+
 if(element === "citrus"){
-// var dataCitrus = [];
-$.get('https://api.punkapi.com/v2/beers?food='+"citrus", (response) => { 
+
+$.get('https://api.punkapi.com/v2/beers?' + getBeersByFlavour + '&food=' + "citrus", (response) => { 
     var dataCitrus = [];
     dataCitrus = response;
     //Only in the callback are we sure that data has been saved,
@@ -211,29 +180,58 @@ $.get('https://api.punkapi.com/v2/beers?food='+"citrus", (response) => {
     console.log(dataCitrus);
     modulePattern.putCitrusInDom(dataCitrus);
 
-
-
 }).catch(function(error){
 	console.log("Error");
 });
 }
 
-
- 
-
-  //if
- 
-
-
-//} for-loopen
-
 }); //forEach
+} //else-statment
 
 },
 
-putBeersInDom: (data) => {
-	
 
+
+addEvent: function(){
+// document.getElementById('foodBeer-btn').addEventListener('click', modulePattern.getUserInput);
+document.getElementById('lightBeers-btn').addEventListener('click', modulePattern.getLightBeers);
+document.getElementById('darkBeers-btn').addEventListener('click', modulePattern.getDarkBeers);
+// document.getElementById('beers-btn').addEventListener('click', modulePattern.getAllBeers);
+document.getElementById('getAlcBeer').addEventListener('change', modulePattern.selectBeersByAlcohol);
+document.getElementById('getAllBeer').addEventListener('change', modulePattern.selectAllBeers);
+document.getElementById('getAlcBeerByFlavour').addEventListener('change', modulePattern.selectBeersByFlavour);
+document.getElementById('search-btn').addEventListener('click', modulePattern.getBeerPrice);
+
+},
+
+
+
+
+getBeerPrice: function() { 
+
+	$.ajax(
+	{
+    url: 'https://karlroos-systemet.p.mashape.com/product?limit=100&name=brewdog&order_by=name', // The URL to the API. You can get this by clicking on "Show CURL example" from an API profile
+    type: 'GET', // The HTTP Method, can be GET POST PUT DELETE etc
+    data: {}, // Additional parameters here
+    dataType: 'json',
+    success: function(data) {
+    	//
+        //Change data.source to data.something , where something is whichever part of the object you want returned.
+        //To see the whole object you can output it to your browser console using:
+        console.log(data);
+        modulePattern.showPriceInDom(data);
+
+       	// document.getElementById("output").innerHTML = data.source; 
+        },
+    error: function(error) { console.log("Error"); },
+    beforeSend: function(xhr) {
+    xhr.setRequestHeader("X-Mashape-Authorization", "6myQMMIXtCmshRYsqqNr3ik67JNxp1JM1SIjsnsY9FE7luqhcI"); // Enter here your Mashape key
+    }
+});
+},
+
+showPriceInDom: (data) => {
 	console.log("baaaah")
 	if(data == ''){
 		 console.log("Errorssss")
@@ -248,15 +246,17 @@ putBeersInDom: (data) => {
             for (var i = 0; i < data.length ;i++){
                 showHTML += 
                 `
-                <div class="dom-wrapper">
+                <div class="dom-wrapper-systembolaget">
                 	<div class="dom-left">
-                		<img src="${data[i].image_url}" class="beer-img"><br>
+                		<img src="${"http://press.systembolaget.se/wp-content/uploads/2016/06/SB_2015_300x168px.png"}" class="systemet-img"><br>
+                		Tel: 0771 - 83 83 00<br>
+                		<a href="https://www.systembolaget.se/butiker-ombud/" target="_blank">Systembolaget.se</a>
                 	</div>
 				<div class="dom-right">
 	                <h4>${data[i].name}</h4>
-	                Alcohol: ${data[i].abv}%<br>
-	                Food pairing: ${data[i].food_pairing.join(", ")} <br>
-	                Description: ${data[i].description}
+	               	<h4>${data[i].name_2}</h4>
+	                Price: ${data[i].price} SEK<br>
+	               	Aclohol: ${(data[i].alcohol * 100).toFixed(0)}% <br>
                 </div>
                 </div>`;
             beerList.innerHTML = showHTML;
@@ -266,17 +266,64 @@ putBeersInDom: (data) => {
 		}
 	},
 
+putBeersInDom: (data) => {
+	
+	console.log("baaaah")
+
+
+
+	// if(data == ''){
+	// 	 console.log("Errorssss")
+	// 	let error = document.getElementById("errorMsg");
+
+ //            var showError = `<li>Unfortunately we did not find any match. Change your search and try again.</li>`;
+ //            errorMsg.innerHTML = showError;   	
+	// }
+	// else{
+		let beer = document.getElementById("beerList");
+        let showHTML = "";
+            for (var i = 0; i < data.length ;i++){
+                showHTML += 
+                `
+                <div class="dom-wrapper">
+                	<div class="dom-left">
+                		<img src="${data[i].image_url}" class="beer-img"><br>
+                	</div>
+				<div class="dom-right">
+	                <h4>${data[i].name}</h4>
+	                Alcohol: ${data[i].abv}%<br>
+					 <p><h6>Food pairing:</h6> -${data[i].food_pairing.join('<br>-')}<br>
+
+                </div>
+                </div>`;
+            beerList.innerHTML = showHTML;
+        	}
+ 		
+ 
+		// }   <header class="header"><h1>ブリュードッグ</h1><br></header>
+	},
+
 putChocolateInDom: (dataChocolate) => {
 	
  
 console.log(dataChocolate)
 
 	if(dataChocolate == ''){
-		 console.log("Errorssss")
-		let error = document.getElementById("errorMsg");
+		//  console.log("Errorssss")
+		// let error = document.getElementById("errorMsg");
 
-            var showError = `<li>Unfortunately we did not find any match. Change your search and try again.</li>`;
-            errorMsg.innerHTML = showError;   	
+var node = document.createElement("LI");                // Create a <li> node
+var textnode = document.createTextNode("Chocolate: Unfortunately we did not find a match with that alcohol content. Change your search (reload the page) and try again.");         // Create a text node
+node.appendChild(textnode); // Append the text to <li>
+node.setAttribute('class', 'node-class'); 
+document.getElementById("errorMsg").appendChild(node);
+ 
+
+
+
+            // var showError = `<li><h6>Unfortunately we did not find any beer that match with chocolate flavour. <br>
+            // Change your search (reload the page) and try again.<h6></li>`;
+            // errorMsg.innerHTML = showError;   	
 	}
 	else{
 		let beer = document.getElementById("chocolateList");
@@ -291,8 +338,9 @@ console.log(dataChocolate)
 				<div class="dom-right">
 	                <h4>${dataChocolate[i].name}</h4>
 	                Alcohol: ${dataChocolate[i].abv}%<br>
-	                Food pairing: ${dataChocolate[i].food_pairing.join(", ")} <br>
-	                
+					 <p><h5>Food pairing:</h5> -${dataChocolate[i].food_pairing.join('<br>-')}<br>
+	          		<a href="https://www.google.se/#q=${dataChocolate[i].food_pairing.join(", ")}" target="_blank">Google for recepies</a><br>
+         
                 </div>
                 </div>`;
             chocolateList.innerHTML = showHTML;
@@ -303,20 +351,27 @@ console.log(dataChocolate)
 	},
 
 putSpicyInDom: (dataSpicy) => {
-	
-
 	console.log("baaaah")
 	if(dataSpicy == ''){
-		 console.log("Errorssss")
-		let error = document.getElementById("errorMsg");
+		//  console.log("Errorssss")
+		// let error = document.getElementById("errorMsg");
 
-            var showError = `<li>Unfortunately we did not find any match. Change your search and try again.</li>`;
-            errorMsg.innerHTML = showError;   	
+  //           var showError = `<li><h6>Unfortunately we did not find any beer that match with spciy food. <br>
+  //           Change your search (reload the page) and try again.</h6></li>`;
+  //           error.innerHTML = showError; 
+
+var node = document.createElement("LI");                 // Create a <li> node
+var textnode = document.createTextNode("Spicy: Unfortunately we did not find a match with that alcohol content. Change your search (reload the page) and try again.");         // Create a text node
+node.appendChild(textnode); 
+node.setAttribute('class', 'node-class');                              // Append the text to <li>
+document.getElementById("errorMsg").appendChild(node);  
 	}
 	else{
+		
 		let beer = document.getElementById("spicyList");
         let showHTML = "";
             for (var i = 0; i < dataSpicy.length ;i++){
+              
                 showHTML += 
                 `
                 <div class="dom-wrapper">
@@ -326,14 +381,13 @@ putSpicyInDom: (dataSpicy) => {
 				<div class="dom-right">
 	                <h4>${dataSpicy[i].name}</h4>
 	                Alcohol: ${dataSpicy[i].abv}%<br>
-	                Food pairing: ${dataSpicy[i].food_pairing.join(", ")} <br>
-	                
+	                <p><h5>Food pairing:</h5> -${dataSpicy[i].food_pairing.join('<br>-')}<br>
+	                 <a href="https://www.google.se/#q=${dataSpicy[i].food_pairing.join(", ")}" target="_blank">Google for recepies</a><br>
+
                 </div>
                 </div>`;
             spicyList.innerHTML = showHTML;
         	}
- 		
- 
 		}
 	},
 
@@ -345,11 +399,24 @@ putCitrusInDom: (dataCitrus) => {
  
 	console.log("baaaah")
 	if(dataCitrus == ''){
-		 console.log("Errorssss")
-		let error = document.getElementById("errorMsg");
+		//  console.log("Errorssss")
+		// let error = document.getElementById("errorMsg");
 
-            var showError = `<li>Unfortunately we did not find any match. Change your search and try again.</li>`;
-            errorMsg.innerHTML = showError;   	
+  //           var showError = `<li><h6>Unfortunately we did not find any beer that match with citrusy flavours. <br>
+  //           Change your search (reload the page) and try again.</h6></li>`;
+  //           error.innerHTML = showError; 
+
+var node = document.createElement("LI");                 // Create a <li> node
+var textnode = document.createTextNode("Citrus: Unfortunately we did not find a match with that alcohol content. Change your search (reload the page) and try again.");         // Create a text node
+node.appendChild(textnode); 
+node.setAttribute('class', 'node-class');                             // Append the text to <li>
+document.getElementById("errorMsg").appendChild(node);     // Append <li> to <ul> with id="myList"
+
+
+
+
+
+
 	}
 	else{
 		let beer = document.getElementById("citrusList");
@@ -366,7 +433,8 @@ putCitrusInDom: (dataCitrus) => {
 				<div class="dom-right">
 	                <h4>${dataCitrus[i].name}</h4>
 	                Alcohol: ${dataCitrus[i].abv}%<br>
-	                Food pairing: ${dataCitrus[i].food_pairing.join(", ")} <br>
+	                <p><h5>Food pairing:</h5> -${dataCitrus[i].food_pairing.join('<br>-')}<br>
+	                <a href="https://www.google.se/#q=${dataCitrus[i].food_pairing.join(", ")}" target="_blank">Google for recepies</a><br>
  
                 </div>
                 </div>`;
