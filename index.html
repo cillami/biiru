@@ -16,7 +16,7 @@
 <body>
 
 <!-- HEADER -->
-  <header class="header"><h1>BrewDog</h1><br></header>
+<header class="header"><h1>BrewDog</h1><br></header>
 
 <!-- <header class="header"><h1>ブリュードッグ</h1><br></header> -->
 
@@ -29,7 +29,7 @@
 <!-- Left col -->
       <div class="col-sm-12 col-md-4 col-lg-3">
 
- <h1>Beers</h1>
+          <h1>Beers</h1>
         <div class=buttons>
           <button id="lightBeers-btn" class="all-btn">Light beers</button>
           <button id="darkBeers-btn" class="all-btn">Dark beers</button> 
@@ -43,12 +43,11 @@
                 <option value="page=3&per_page=80">Page 3</option>
 
               </select>       
-<!--           <button id="" class="all-btn">........</button>
-          <button id="" class="all-btn">........</button> -->
+ 
 
-       <br><br>
+              <br><br>
               Sort beer by alcohol content:  
-              <select id="getAlcBeer">
+              <select id="getAlcBeerByFlavour">
                 <option value="">Choose Beer</option>
                 <option value="abv_gt=0&abv_lt=1">Alcohol free</option>
                 <option value="abv_gt=2&abv_lt=3">2%</option>
@@ -73,26 +72,26 @@
                
         </div>
 
- <div class="checkboxes">
- <h1>Time to eat?</h1>
-  <p>Find a beer that will match your choice of flavor. <br>
-  Pick a flavor then the alcohol content. <br>
+        <div class="checkboxes">
+          <h1>Time to eat?</h1>
+          <p>Find a beer that will match your choice of flavor. <br>
+            Pick a flavor then the alcohol content. <br>
 
-  <form>
-    <label class="checkbox-inline">
-      <input type="checkbox" class="checkIt" value="spicy">Spicy
-    </label>
-    <label class="checkbox-inline">
-      <input type="checkbox" class="checkIt" value="chocolate">Chocolate
-    </label>
-    <label class="checkbox-inline">
-      <input type="checkbox" class="checkIt" value="citrus">Citrus
-    </label><br><br>
- <!--    <button id="foodBeer-btn" class="all-btn">Match a beer</button> -->
-  </form>
+          <form>
+            <label class="checkbox-inline">
+              <input type="checkbox" class="checkIt" value="spicy">Spicy
+            </label>
+            <label class="checkbox-inline">
+              <input type="checkbox" class="checkIt" value="chocolate">Chocolate
+            </label>
+            <label class="checkbox-inline">
+              <input type="checkbox" class="checkIt" value="citrus">Citrus
+            </label><br><br>
+         <!--    <button id="foodBeer-btn" class="all-btn">Match a beer</button> -->
+          </form>
 
 
-   <div class="selector-food"> How much alcohol?  
+            <div class="selector-food"> How much alcohol?  
               <select id="getAlcBeerForFood">
                 <option value="">Choose Beer</option>
                 <option value="abv_gt=0&abv_lt=1">Alcohol free</option>
@@ -115,22 +114,16 @@
                 <option value="abv_gt=18&abv_lt=19">18%</option>
               </select>
               <div id="error-foodList"></div>
-              </div>
             </div>
+          </div>
 
- <div class="systemet">
-Prices for BrewDog beers available at Systembolaget: 
-<!--         <input type="text" id="searchInput" maxlength="43" placeholder="Search for a beer"> -->
-        <button id="search-btn" class="all-btn">Check prices</button>
-            </div> 
-</div>
+          <div class="systemet">
+            Prices for BrewDog beers available at Systembolaget: 
+            <!--         <input type="text" id="searchInput" maxlength="43" placeholder="Search for a beer"> -->
+            <button id="search-btn" class="all-btn">Check prices</button>
+          </div> 
+      </div>
  
-
-
-
- 
-      
-
   
 <!-- Right col -->
       <div class="col-md-8 col-lg-9 col-sm-12 d-flex flex-row  flex-wrap align-content-center">

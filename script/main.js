@@ -1,7 +1,4 @@
 
-
-
-
 const modulePattern = (function(){
 
 return {
@@ -40,9 +37,8 @@ $.get('https://api.punkapi.com/v2/beers?ebc_gt=50&page=1&per_page=80', (response
 
 selectAllBeers: function (choice) {
             console.log("click")
-            var getAllBeers = modulePattern.getAllBeers(choice.target.value);
-            
-         },
+            var getAllBeers = modulePattern.getAllBeers(choice.target.value);        
+},
 getAllBeers: function(getAllBeers){
 
 var data = [];
@@ -51,8 +47,6 @@ $.get('https://api.punkapi.com/v2/beers?' + getAllBeers, (response) => {
     //Only in the callback are we sure that data has been saved,
     //the anonym function will run on success, when the response
     //has returned
-
-
     console.log(data);
     modulePattern.putBeersInDom(data);
 //lägg en ny get, skicka vidare till PUTINDOM
@@ -60,10 +54,6 @@ $.get('https://api.punkapi.com/v2/beers?' + getAllBeers, (response) => {
 }).catch(function(error){
 	console.log("Error");
 });
-
-
-
-
 },
 
 
@@ -71,8 +61,7 @@ selectBeersByAlcohol: function (choice) {
             console.log("click")
             var getBeers = modulePattern.getBeersByAlcohol(choice.target.value);
             
-         },
-
+ },
 
 getBeersByAlcohol: function(getBeers){
 	console.log("Hihi")
@@ -190,8 +179,6 @@ $.get('https://api.punkapi.com/v2/beers?' + getBeersByFlavour + '&food=' + "citr
 
 },
 
-
-
 addEvent: function(){
 // document.getElementById('foodBeer-btn').addEventListener('click', modulePattern.getUserInput);
 document.getElementById('lightBeers-btn').addEventListener('click', modulePattern.getLightBeers);
@@ -203,9 +190,6 @@ document.getElementById('getAlcBeerByFlavour').addEventListener('change', module
 document.getElementById('search-btn').addEventListener('click', modulePattern.getBeerPrice);
 
 },
-
-
-
 
 getBeerPrice: function() { 
 
@@ -261,17 +245,12 @@ showPriceInDom: (data) => {
                 </div>`;
             beerList.innerHTML = showHTML;
         	}
- 		
- 
 		}
 	},
 
 putBeersInDom: (data) => {
 	
 	console.log("baaaah")
-
-
-
 	// if(data == ''){
 	// 	 console.log("Errorssss")
 	// 	let error = document.getElementById("errorMsg");
@@ -298,9 +277,8 @@ putBeersInDom: (data) => {
                 </div>`;
             beerList.innerHTML = showHTML;
         	}
- 		
- 
-		// }   <header class="header"><h1>ブリュードッグ</h1><br></header>
+
+		// }   
 	},
 
 putChocolateInDom: (dataChocolate) => {
@@ -312,15 +290,11 @@ console.log(dataChocolate)
 		//  console.log("Errorssss")
 		// let error = document.getElementById("errorMsg");
 
-var node = document.createElement("LI");                // Create a <li> node
-var textnode = document.createTextNode("Chocolate: Unfortunately we did not find a match with that alcohol content. Change your search (reload the page) and try again.");         // Create a text node
-node.appendChild(textnode); // Append the text to <li>
-node.setAttribute('class', 'node-class'); 
-document.getElementById("errorMsg").appendChild(node);
- 
-
-
-
+		var node = document.createElement("LI");                // Create a <li> node
+		var textnode = document.createTextNode("Chocolate: Unfortunately we did not find a match with that alcohol content. Change your search (reload the page) and try again.");         // Create a text node
+		node.appendChild(textnode); // Append the text to <li>
+		node.setAttribute('class', 'node-class'); 
+		document.getElementById("errorMsg").appendChild(node);
             // var showError = `<li><h6>Unfortunately we did not find any beer that match with chocolate flavour. <br>
             // Change your search (reload the page) and try again.<h6></li>`;
             // errorMsg.innerHTML = showError;   	
@@ -391,31 +365,22 @@ document.getElementById("errorMsg").appendChild(node);
 		}
 	},
 
-
-
-
 putCitrusInDom: (dataCitrus) => {
 	
  
 	console.log("baaaah")
 	if(dataCitrus == ''){
-		//  console.log("Errorssss")
 		// let error = document.getElementById("errorMsg");
 
   //           var showError = `<li><h6>Unfortunately we did not find any beer that match with citrusy flavours. <br>
   //           Change your search (reload the page) and try again.</h6></li>`;
   //           error.innerHTML = showError; 
 
-var node = document.createElement("LI");                 // Create a <li> node
-var textnode = document.createTextNode("Citrus: Unfortunately we did not find a match with that alcohol content. Change your search (reload the page) and try again.");         // Create a text node
-node.appendChild(textnode); 
-node.setAttribute('class', 'node-class');                             // Append the text to <li>
-document.getElementById("errorMsg").appendChild(node);     // Append <li> to <ul> with id="myList"
-
-
-
-
-
+		var node = document.createElement("LI");                 // Create a <li> node
+		var textnode = document.createTextNode("Citrus: Unfortunately we did not find a match with that alcohol content. Change your search (reload the page) and try again.");         // Create a text node
+		node.appendChild(textnode); 
+		node.setAttribute('class', 'node-class');                             // Append the text to <li>
+		document.getElementById("errorMsg").appendChild(node);     // Append <li> to <ul> with id="myList"
 
 	}
 	else{
@@ -451,5 +416,3 @@ document.getElementById("errorMsg").appendChild(node);     // Append <li> to <ul
 
 modulePattern.addEvent();
 // console.log(modulePattern.getFood());
-
-// deleteAlbumAPI();
