@@ -6,23 +6,25 @@ body {
   /*  letter-spacing: 0.2em;*/ }
 
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0; }
+  box-sizing: border-box; }
 
 /*------BUTTONS------*/
 .all-btn {
   padding: 0.5rem;
+  width: 10rem;
   border-radius: 0.2rem;
   border: 1px solid black;
-  background-color: white;
-  margin: 0.5rem 0.5rem 0.5rem 0; }
+  background-color: black;
+  color: white;
+  margin: 0.5rem 0.5rem 0.5rem 0;
+  box-shadow: 3px 3px  lightgrey;
+  font-size: 1.2rem !important; }
 
 /*------CHeckboxes------*/
 .checkboxes {
   margin-top: 2rem;
   padding: 0.5rem;
-  border: 1px solid black; }
+  /*border: 1px solid black;*/ }
 
 .container-fluid {
   background-color: lightgrey !important;
@@ -32,25 +34,48 @@ body {
 .header {
   background-color: black !important;
   width: 100%;
-  padding: 1rem 0 0 1rem;
+  display: flex;
+  /*    padding:1rem 0 0 1rem;*/
   position: fixed;
   z-index: 2000;
   opacity: 0.9;
   color: white; }
 
+.header-text {
+  width: 100%;
+  padding: 0.4rem 0 0 1rem; }
+
+.header-p {
+  font-size: 1.5rem; }
+
 .row {
   background-color: white !important;
   margin-top: 7rem; }
 
-.col-md-3 {
-  /*  position:fixed !important;*/ }
+.logo {
+  height: 6.5rem; }
+
+.logo-systemet {
+  height: 3rem; }
+
+.logo-diepunk {
+  height: 10rem; }
+
+.img-footer {
+  width: 28%;
+  /*height:20%;*/
+  float: right;
+  /*display:block;
+  margin:auto;
+  margin-right:0 !important;
+  padding-right:0 !important;*/ }
 
 .beer-img {
-  width: 3rem;
+  width: 6rem;
   padding-left: 2rem; }
 
 .systemet {
-  padding-top: 2rem; }
+  /*  padding-top: 2rem;*/ }
 
 .systemet-img {
   width: 8rem;
@@ -152,6 +177,9 @@ body {
     margin-left: 0rem !important;
     padding-right: 2rem !important;
     margin-right: 0.1rem !important; } }
+@media (min-width: 1000px) {
+  .header-text1 {
+    display: none; } }
 @media (max-width: 1000px) {
   .container {
     width: 1000px !important;
@@ -159,7 +187,10 @@ body {
     padding-left: 2rem !important;
     margin-left: 0rem !important;
     padding-right: 2rem !important;
-    margin-right: 0.1rem !important; } }
+    margin-right: 0.1rem !important; }
+
+  .header-text {
+    display: none; } }
 @media (max-width: 1200px) {
   .container {
     width: 1200px !important;

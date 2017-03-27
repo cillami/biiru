@@ -16,10 +16,10 @@
 <body>
 
 <!-- HEADER -->
-<header class="header"><h1>BrewDog</h1><br></header>
+<header class="header"><img src="img/brewdog_bg.jpg" class="logo"><h1 class="header-text">Beer For Punks <br>Get to know BrewDog Beers!</h1></header>
 
+<!-- <p class="header-p">Get to know BrewDog beers!</p> -->
 <!-- <header class="header"><h1>ブリュードッグ</h1><br></header> -->
-
 <!-- Container -->
   <div class="container">
 
@@ -28,8 +28,7 @@
 
 <!-- Left col -->
       <div class="col-sm-12 col-md-4 col-lg-3">
-
-          <h1>Beers</h1>
+      <h1 class="header-text1">Beer For Punks <br>Get to know BrewDog Beers!</h1>
         <div class=buttons>
           <button id="lightBeers-btn" class="all-btn">Light beers</button>
           <button id="darkBeers-btn" class="all-btn">Dark beers</button> 
@@ -47,15 +46,15 @@
 
               <br><br>
               Sort beer by alcohol content:  
-              <select id="getAlcBeerByFlavour">
+              <select id="getAlcBeer">
                 <option value="">Choose Beer</option>
                 <option value="abv_gt=0&abv_lt=1">Alcohol free</option>
                 <option value="abv_gt=2&abv_lt=3">2%</option>
                 <option value="abv_gt=3&abv_lt=4">3%</option>
-                <option value="abv_gt=4&abv_lt=5">4%</option>
+                <option value="abv_gt=4&abv_lt=5&page=1&per_page=34">4%</option>
                 <option value="abv_gt=5&abv_lt=6">5%</option>
-                <option value="abv_gt=6&abv_lt=7">6%</option>
-                <option value="abv_gt=7&abv_lt=8">7%</option>
+                <option value="abv_gt=6&abv_lt=7&page=1&per_page=30">6%</option>
+                <option value="abv_gt=7&abv_lt=8&page=1&per_page=38">7%</option>
                 <option value="abv_gt=8&abv_lt=9">8%</option>                
                 <option value="abv_gt=9&abv_lt=10">9%</option>
                 <option value="abv_gt=10&abv_lt=11">10%</option>
@@ -73,8 +72,10 @@
         </div>
 
         <div class="checkboxes">
-          <h1>Time to eat?</h1>
-          <p>Find a beer that will match your choice of flavor. <br>
+
+<!--                   <img src="img/brewdog_diepunk.jpg" class="logo-diepunk"> -->
+                    <h1>Time to eat?</h1>
+                    <p>Find a beer that will match your choice of flavor. <br>
             Pick a flavor then the alcohol content. <br>
 
           <form>
@@ -92,7 +93,7 @@
 
 
             <div class="selector-food"> How much alcohol?  
-              <select id="getAlcBeerForFood">
+              <select id="getAlcBeerByFlavour">
                 <option value="">Choose Beer</option>
                 <option value="abv_gt=0&abv_lt=1">Alcohol free</option>
                 <option value="abv_gt=2&abv_lt=3">2%</option>
@@ -118,6 +119,8 @@
           </div>
 
           <div class="systemet">
+  <!--         <img src="img/systemet_svartvit.png" class="logo-systemet"> -->
+          <br>
             Prices for BrewDog beers available at Systembolaget: 
             <!--         <input type="text" id="searchInput" maxlength="43" placeholder="Search for a beer"> -->
             <button id="search-btn" class="all-btn">Check prices</button>
@@ -133,13 +136,15 @@
         <div id="chocolateList" class="d-flex flex-row flex-wrap"></div>
         <div id="citrusList" class="d-flex flex-row flex-wrap"></div>
         <div id="errorMsg"></div>
+<!--         <img src="img/brewdog_diepunk.jpg" class="img-footer"> -->
+
       </div>
 <!-- End row -->     
     </div>
 
 <!-- End container -->   
 </div>
-
+<footer class="footer">      <img src="img/brewdog_diepunk.jpg" class="img-footer"></footer>
 <script src="script/main.js"></script>  
 </body>
 </html>
