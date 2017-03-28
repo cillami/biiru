@@ -14,7 +14,7 @@
 <body>
 
 <!-- HEADER -->
-<header class="header"><img src="img/brewdog_bg.jpg" class="logo"><h3 class="header-text">Beer For Punks <br>Get to know BrewDog Beers!</h3></header>
+<header class="header"><img src="img/brewdog_bg.jpg" class="logo"><h3 class="header-text">Thirsty of course. Hungry? <br><span style="color:salmon">Find food to pair up with your beer</span></h3></header>
 
 <!-- <p class="header-p">Get to know BrewDog beers!</p> -->
 <!-- <header class="header"><h1>ブリュードッグ</h1><br></header> -->
@@ -26,7 +26,7 @@
 
 <!-- Left col -->
       <div class="col-sm-12 col-md-4 col-lg-4 lefty">
-      <h3 class="header-text1">Beer For Punks <br>Get to know BrewDog Beers!</h3>
+      <h3 class="header-text1">Find food to pair up with your beer!</h3>
 
 <div class="checkboxes">
 
@@ -37,21 +37,20 @@
 
           <form>
             <label class="checkbox-inline">
-              <input type="checkbox" class="checkIt" value="spicy">Spicy
+              <input type="checkbox" class="checkIt" value="spicy"> Spicy
             </label>
             <label class="checkbox-inline">
-              <input type="checkbox" class="checkIt" value="chocolate">Chocolate
+              <input type="checkbox" class="checkIt" value="chocolate"> Chocolate
             </label>
             <label class="checkbox-inline">
-              <input type="checkbox" class="checkIt" value="citrus">Citrus
-            </label><br><br>
-         <!--    <button id="foodBeer-btn" class="all-btn">Match a beer</button> -->
+              <input type="checkbox" class="checkIt" value="citrus"> Citrus
+            </label>
           </form>
+<!--                    <br><button id="foodBeer-btn" class="all-btn">Match a beer</button>  -->
 
-
-            <div class="selector-food"> How much alcohol?  
-              <select id="getAlcBeerByFlavour">
-                <option value="">Choose Beer</option>
+            <div class="selector-food">Find a match by choosing alcohol content: <br> 
+              <select id="getAlcBeerByFlavour" class="selector">
+                <option value="">Choose here</option>
                 <option value="abv_gt=0&abv_lt=1">Alcohol free</option>
                 <option value="abv_gt=2&abv_lt=5">2%-4%</option>
                 <option value="abv_gt=5&abv_lt=8">5%-7%</option>
@@ -62,26 +61,27 @@
               </select>
               <div id="error-foodList"></div>
             </div>
-          </div>
-      
+          </div> 
+      <hr class="style">
+        
+
         <div class=buttons>
           <button id="lightBeers-btn" class="all-btn">Light beers</button>
           <button id="darkBeers-btn" class="all-btn">Dark beers</button> 
+        </div>
 <!--           <button id="beers-btn" class="all-btn">Show all of 'em (p. 1)</button>  -->
-
-               <p><br>Get all beers (3 pages):  
-              <select id="getAllBeer">
+    <hr class="style">
+               <div>
+               <p>Get all beers (3 pages): <br> 
+              <select id="getAllBeer" class="selector">
                 <option value="">Choose page</option>
                 <option value="page=1&per_page=80">Page 1</option>
                 <option value="page=2&per_page=80">Page 2</option>
                 <option value="page=3&per_page=80">Page 3</option>
-
-              </select>       
- 
-
-              <br><br>
-              Sort beer by alcohol content:  
-              <select id="getAlcBeer">
+              </select>      
+ <hr class="style">
+              Sort beer by alcohol content:  <br>
+              <select id="getAlcBeer" class="selector">
                 <option value="">Choose Beer</option>
                 <option value="abv_gt=0&abv_lt=1">Alcohol free</option>
                 <option value="abv_gt=2&abv_lt=3">2%</option>
@@ -103,19 +103,20 @@
                 <option value="abv_gt=18&abv_lt=19">18%</option>
                 <option value="abv_gt=54">The End Of History 55%</option>
               </select>
-               
-        </div>
+                <hr class="style">
+        </div> 
 
         
 
           <div class="systemet">
   <!--         <img src="img/systemet_svartvit.png" class="logo-systemet"> -->
-          <br>
-            Prices for BrewDog beers available at Systembolaget: 
+
+            BrewDog beers available at Systembolaget:<br>
             <!--         <input type="text" id="searchInput" maxlength="43" placeholder="Search for a beer"> -->
             <button id="search-btn" class="all-btn">Check prices</button>
           </div> 
-      </div>
+      
+
  
   
 <!-- Right col -->
@@ -126,7 +127,6 @@
         <div id="chocolateList" class="d-flex flex-row flex-wrap"></div>
         <div id="citrusList" class="d-flex flex-row flex-wrap"></div>
         <div id="errorMsg"></div>
-<!--         <img src="img/brewdog_diepunk.jpg" class="img-footer"> -->
 
       </div>
 <!-- End row -->     
@@ -134,7 +134,10 @@
 
 <!-- End container -->   
 </div>
-<footer class="footer">      <img src="img/brewdog_diepunk.jpg" class="img-footer"></footer>
+<footer class="footer">
+<img src="img/brewdog_diepunk.jpg" class="img-footer"> 
+</footer>
+
 <script src="script/main.js"></script>  
 </body>
 </html>

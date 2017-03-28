@@ -2,7 +2,7 @@ body {
   display: flex;
   align-items: center;
   flex-direction: column;
-  font: 16px/24px "Source Sans Pro", sans-serif !important;
+  font: 14px/24px "Source Sans Pro", sans-serif !important;
   /*  letter-spacing: 0.2em;*/ }
 
 * {
@@ -10,7 +10,7 @@ body {
 
 /*------BUTTONS------*/
 .all-btn {
-  padding: 0.5rem;
+  padding: 0.1rem;
   width: 7rem;
   border-radius: 0.2rem;
   border: 1px solid black;
@@ -26,10 +26,15 @@ body {
   /*padding:0.5rem;*/
   /*border: 1px solid black;*/ }
 
+.selector {
+  width: 15rem; }
+
+.container {
+  padding-right: 0 !important; }
+
 .container-fluid {
   background-color: lightgrey !important;
-  /*  margin:0 !important;
-    padding:0 !important;*/ }
+  /*  margin:0 !important;*/ }
 
 .header {
   background-color: black !important;
@@ -52,6 +57,14 @@ body {
   background-color: white !important;
   margin-top: 7rem; }
 
+/* Gradient transparent - color - transparent */
+hr.style {
+  border: 0;
+  width: 15rem;
+  height: 1px;
+  margin: 0.8rem 0 0.8rem 0;
+  background-image: linear-gradient(to right, rgba(255, 160, 122, 0.2), lightsalmon, rgba(255, 160, 122, 0.2)); }
+
 .logo {
   height: 5.5rem; }
 
@@ -63,12 +76,7 @@ body {
 
 .img-footer {
   width: 28%;
-  /*height:20%;*/
-  float: right;
-  /*display:block;
-  margin:auto;
-  margin-right:0 !important;
-  padding-right:0 !important;*/ }
+  float: right; }
 
 .beer-img {
   width: 5.5rem;
@@ -101,7 +109,7 @@ body {
   padding: 1rem;
   margin: 1rem;
   border: 1px solid black;
-  width: 36rem; }
+  width: 24rem; }
 
 .dom-wrapper {
   display: flex;
@@ -158,46 +166,37 @@ body {
     width: 1800px !important;
     max-width: 100% !important;
     padding-left: 2rem !important;
-    margin-left: 0rem !important;
-    padding-right: 2rem !important;
-    margin-right: 0.1rem !important; } }
+    margin-left: 0rem !important; } }
 @media (max-width: 768px) {
   .container {
     width: 768px !important;
     max-width: 100% !important;
     padding-left: 2rem !important;
-    margin-left: 0rem !important;
-    padding-right: 2rem !important;
-    margin-right: 0.1rem !important; } }
+    margin-left: 0rem !important; } }
 @media (max-width: 900px) {
   .container {
     width: 900px !important;
     max-width: 100% !important;
     padding-left: 2rem !important;
-    margin-left: 0rem !important;
-    padding-right: 2rem !important;
-    margin-right: 0.1rem !important; } }
+    margin-left: 0rem !important; } }
 @media (min-width: 1200px) {
   .header-text1 {
     display: none; } }
+@media (max-width: 1200px) {
+  .header-text {
+    display: none;
+    color: red; } }
 @media (max-width: 900px) {
   .container {
     width: 1000px !important;
     max-width: 100% !important;
     padding-left: 2rem !important;
-    margin-left: 0rem !important;
-    padding-right: 2rem !important;
-    margin-right: 0.1rem !important; } }
+    margin-left: 0rem !important; } }
 @media (max-width: 1200px) {
   .container {
     width: 1200px !important;
     max-width: 100% !important;
     padding-left: 2rem !important;
-    margin-left: 0rem !important;
-    padding-right: 2rem !important;
-    margin-right: 0.1rem !important; }
-
-  .header-text {
-    display: none; } }
+    margin-left: 0rem !important; } }
 
 /*# sourceMappingURL=main.css.map */
