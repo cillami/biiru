@@ -271,7 +271,12 @@ putBeersInDom: (data) => {
 				<div class="dom-right">
 	                <h4>${data[i].name}</h4>
 	                Alcohol: ${data[i].abv}%<br>
-					 <p><h6>Food pairing:</h6> -${data[i].food_pairing.join('<br>-')}<br>
+					 <p><h5>Food pairing:</h5> 
+					 1. <a href="https://www.google.se/#q=${data[i].food_pairing[0]}" target="_blank">${data[i].food_pairing[0]}</a><br>
+					 2. <a href="https://www.google.se/#q=${data[i].food_pairing[1]}" target="_blank">${data[i].food_pairing[1]}</a><br>
+					 3. <a href="https://www.google.se/#q=${data[i].food_pairing[2]}" target="_blank">${data[i].food_pairing[2]}</a><br>
+         
+
 
                 </div>
                 </div>`;
@@ -291,7 +296,7 @@ console.log(dataChocolate)
 		// let error = document.getElementById("errorMsg");
 
 		var node = document.createElement("LI");                // Create a <li> node
-		var textnode = document.createTextNode("Chocolate: Unfortunately we did not find a match with that alcohol content. Change your search (reload the page) and try again.");         // Create a text node
+		var textnode = document.createTextNode("C: Unfortunately we did not find a match with that alcohol content. Change your search (reload the page) and try again.");         // Create a text node
 		node.appendChild(textnode); // Append the text to <li>
 		node.setAttribute('class', 'node-class'); 
 		document.getElementById("errorMsg").appendChild(node);
@@ -302,7 +307,13 @@ console.log(dataChocolate)
 	else{
 		let beer = document.getElementById("chocolateList");
         let showHTML = "";
-            for (var i = 0; i < dataChocolate.length ;i++){
+        	for (var i = 0; i < dataChocolate.length; i++) {
+        		var foods= dataChocolate[i].food_pairing;
+        	}
+ 			for (var i = 0; i < foods.length; i++) {
+ 				console.log(foods[i]);
+ 				console.log(dataChocolate);
+ 			
                 showHTML += 
                 `
                 <div class="dom-wrapper">
@@ -312,14 +323,15 @@ console.log(dataChocolate)
 				<div class="dom-right">
 	                <h4>${dataChocolate[i].name}</h4>
 	                Alcohol: ${dataChocolate[i].abv}%<br>
-					 <p><h5>Food pairing:</h5> -${dataChocolate[i].food_pairing.join('<br>-')}<br>
-	          		<a href="https://www.google.se/#q=${dataChocolate[i].food_pairing.join(", ")}" target="_blank">Google for recepies</a><br>
+					 <p><h5>Food pairing:</h5> 
+					 1. <a href="https://www.google.se/#q=${dataChocolate[i].food_pairing[0]}" target="_blank">${dataChocolate[i].food_pairing[0]}</a><br>
+					 2. <a href="https://www.google.se/#q=${dataChocolate[i].food_pairing[1]}" target="_blank">${dataChocolate[i].food_pairing[1]}</a><br>
+					 3. <a href="https://www.google.se/#q=${dataChocolate[i].food_pairing[2]}" target="_blank">${dataChocolate[i].food_pairing[2]}</a><br>
          
                 </div>
                 </div>`;
             chocolateList.innerHTML = showHTML;
         	}
- 		
  
 		}
 	},
@@ -335,7 +347,7 @@ putSpicyInDom: (dataSpicy) => {
   //           error.innerHTML = showError; 
 
 var node = document.createElement("LI");                 // Create a <li> node
-var textnode = document.createTextNode("Spicy: Unfortunately we did not find a match with that alcohol content. Change your search (reload the page) and try again.");         // Create a text node
+var textnode = document.createTextNode("SPICY: Unfortunately we did not find a match with that alcohol content. Change your search (reload the page) and try again.");         // Create a text node
 node.appendChild(textnode); 
 node.setAttribute('class', 'node-class');                              // Append the text to <li>
 document.getElementById("errorMsg").appendChild(node);  
@@ -344,8 +356,10 @@ document.getElementById("errorMsg").appendChild(node);
 		
 		let beer = document.getElementById("spicyList");
         let showHTML = "";
-            for (var i = 0; i < dataSpicy.length ;i++){
-              
+        	for (var i = 0; i < dataSpicy.length; i++) {
+        		var foods= dataSpicy[i].food_pairing;
+        	}
+ 			for (var i = 0; i < foods.length; i++) { 			
                 showHTML += 
                 `
                 <div class="dom-wrapper">
@@ -355,9 +369,11 @@ document.getElementById("errorMsg").appendChild(node);
 				<div class="dom-right">
 	                <h4>${dataSpicy[i].name}</h4>
 	                Alcohol: ${dataSpicy[i].abv}%<br>
-	                <p><h5>Food pairing:</h5> -${dataSpicy[i].food_pairing.join('<br>-')}<br>
-	                 <a href="https://www.google.se/#q=${dataSpicy[i].food_pairing.join(", ")}" target="_blank">Google for recepies</a><br>
-
+					 <p><h5>Food pairing:</h5> 
+					 1. <a href="https://www.google.se/#q=${dataSpicy[i].food_pairing[0]}" target="_blank">${dataSpicy[i].food_pairing[0]}</a><br>
+					 2. <a href="https://www.google.se/#q=${dataSpicy[i].food_pairing[1]}" target="_blank">${dataSpicy[i].food_pairing[1]}</a><br>
+					 3. <a href="https://www.google.se/#q=${dataSpicy[i].food_pairing[2]}" target="_blank">${dataSpicy[i].food_pairing[2]}</a><br>
+         
                 </div>
                 </div>`;
             spicyList.innerHTML = showHTML;
@@ -377,7 +393,7 @@ putCitrusInDom: (dataCitrus) => {
   //           error.innerHTML = showError; 
 
 		var node = document.createElement("LI");                 // Create a <li> node
-		var textnode = document.createTextNode("Citrus: Unfortunately we did not find a match with that alcohol content. Change your search (reload the page) and try again.");         // Create a text node
+		var textnode = document.createTextNode("CITRUS: Unfortunately we did not find a match with that alcohol content. Change your search (reload the page) and try again.");         // Create a text node
 		node.appendChild(textnode); 
 		node.setAttribute('class', 'node-class');                             // Append the text to <li>
 		document.getElementById("errorMsg").appendChild(node);     // Append <li> to <ul> with id="myList"
@@ -386,9 +402,13 @@ putCitrusInDom: (dataCitrus) => {
 	else{
 		let beer = document.getElementById("citrusList");
         let showHTML = "";
-        var bla ="";
-            for (var i = 0; i < dataCitrus.length ;i++){
- 
+        	for (var i = 0; i < dataCitrus.length; i++) {
+        		var foods= dataCitrus[i].food_pairing;
+        	}
+ 			for (var i = 0; i < foods.length; i++) {
+ 				console.log(foods[i]);
+ 				console.log(dataCitrus);
+ 			
                 showHTML += 
                 `
                 <div class="dom-wrapper">
@@ -398,16 +418,15 @@ putCitrusInDom: (dataCitrus) => {
 				<div class="dom-right">
 	                <h4>${dataCitrus[i].name}</h4>
 	                Alcohol: ${dataCitrus[i].abv}%<br>
-	                <p><h5>Food pairing:</h5> -${dataCitrus[i].food_pairing.join('<br>-')}<br>
-	                <a href="https://www.google.se/#q=${dataCitrus[i].food_pairing.join(", ")}" target="_blank">Google for recepies</a><br>
- 
+					 <p><h5>Food pairing:</h5> 
+					 1. <a href="https://www.google.se/#q=${dataCitrus[i].food_pairing[0]}" target="_blank">${dataCitrus[i].food_pairing[0]}.</a><br>
+					 2. <a href="https://www.google.se/#q=${dataCitrus[i].food_pairing[1]}" target="_blank">${dataCitrus[i].food_pairing[1]}.</a><br>
+					 3. <a href="https://www.google.se/#q=${dataCitrus[i].food_pairing[2]}" target="_blank">${dataCitrus[i].food_pairing[2]}.</a><br>
+         
                 </div>
                 </div>`;
             citrusList.innerHTML = showHTML;
         	}
-        	
- 		
- 
 		}
 	}
 

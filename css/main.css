@@ -2,8 +2,7 @@ body {
   display: flex;
   align-items: center;
   flex-direction: column;
-  /*  font: 16px/1.5 "Source Sans Pro", sans-serif;*/
-  font: 16px/1.5;
+  font: 16px/24px "Source Sans Pro", sans-serif !important;
   /*  letter-spacing: 0.2em;*/ }
 
 * {
@@ -12,19 +11,19 @@ body {
 /*------BUTTONS------*/
 .all-btn {
   padding: 0.5rem;
-  width: 10rem;
+  width: 7rem;
   border-radius: 0.2rem;
   border: 1px solid black;
   background-color: black;
   color: white;
   margin: 0.5rem 0.5rem 0.5rem 0;
   box-shadow: 3px 3px  lightgrey;
-  font-size: 1.2rem !important; }
+  font-size: 0.8rem !important; }
 
 /*------CHeckboxes------*/
 .checkboxes {
-  margin-top: 2rem;
-  padding: 0.5rem;
+  margin-top: 0.5rem;
+  /*padding:0.5rem;*/
   /*border: 1px solid black;*/ }
 
 .container-fluid {
@@ -54,7 +53,7 @@ body {
   margin-top: 7rem; }
 
 .logo {
-  height: 6.5rem; }
+  height: 5.5rem; }
 
 .logo-systemet {
   height: 3rem; }
@@ -72,8 +71,8 @@ body {
   padding-right:0 !important;*/ }
 
 .beer-img {
-  width: 6rem;
-  padding-left: 2rem; }
+  width: 5.5rem;
+  padding-left: 1rem; }
 
 .systemet {
   /*  padding-top: 2rem;*/ }
@@ -107,20 +106,20 @@ body {
 .dom-wrapper {
   display: flex;
   padding: 1rem;
-  margin: 1rem;
+  margin: 0.2rem;
   border: 1px solid black;
-  width: 40rem; }
+  width: 23rem; }
 
 .dom-left {
   min-width: 99px;
-  margin-bottom: 3rem; }
+  margin-bottom: 1rem; }
 
 .dom-right {
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
   padding-left: 1rem; }
 
 .selector-food {
-  margin-bottom: 2.5rem; }
+  /*  margin-bottom:2.5rem;*/ }
 
 /*----*/
 /*#custom-search-input{
@@ -178,12 +177,20 @@ body {
     margin-left: 0rem !important;
     padding-right: 2rem !important;
     margin-right: 0.1rem !important; } }
-@media (min-width: 1000px) {
+@media (min-width: 1200px) {
   .header-text1 {
     display: none; } }
-@media (max-width: 1000px) {
+@media (max-width: 900px) {
   .container {
     width: 1000px !important;
+    max-width: 100% !important;
+    padding-left: 2rem !important;
+    margin-left: 0rem !important;
+    padding-right: 2rem !important;
+    margin-right: 0.1rem !important; } }
+@media (max-width: 1200px) {
+  .container {
+    width: 1200px !important;
     max-width: 100% !important;
     padding-left: 2rem !important;
     margin-left: 0rem !important;
@@ -192,13 +199,5 @@ body {
 
   .header-text {
     display: none; } }
-@media (max-width: 1200px) {
-  .container {
-    width: 1200px !important;
-    max-width: 100% !important;
-    padding-left: 2rem !important;
-    margin-left: 0rem !important;
-    padding-right: 2rem !important;
-    margin-right: 0.1rem !important; } }
 
 /*# sourceMappingURL=main.css.map */

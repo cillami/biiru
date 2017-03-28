@@ -34,13 +34,13 @@
 	}
 }
 
-@media (min-width: 1000px){
+@media (min-width: 1200px){
 		.header-text1{
 		display:none;
 	} 
 }
 
-@media (max-width: 1000px){
+@media (max-width: 900px){
 
 .container {
 	width: 1000px !important;
@@ -49,9 +49,6 @@
     margin-left: 0rem !important;
     padding-right:2rem !important;
     margin-right:0.1rem !important;
-	}
-		.header-text{
-		display:none;
 	}
 }
 @media (max-width: 1200px){
@@ -63,6 +60,9 @@
     margin-left: 0rem !important;
     padding-right:2rem !important;
     margin-right:0.1rem !important;
+	}
+			.header-text{
+		display:none;
 	}
 }
 
