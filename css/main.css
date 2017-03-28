@@ -2,7 +2,8 @@ body {
   display: flex;
   align-items: center;
   flex-direction: column;
-  font: 16px/1.5 "Source Sans Pro", sans-serif;
+  /*  font: 16px/1.5 "Source Sans Pro", sans-serif;*/
+  font: 16px/1.5;
   /*  letter-spacing: 0.2em;*/ }
 
 * {
