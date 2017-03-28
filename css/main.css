@@ -29,9 +29,9 @@ body {
 .selector {
   width: 15rem; }
 
-.container {
-  padding-right: 0 !important; }
-
+/*.container{
+  padding-right:0 !important;
+}*/
 .container-fluid {
   background-color: lightgrey !important;
   /*  margin:0 !important;*/ }
@@ -49,6 +49,9 @@ body {
 .header-text {
   width: 100%;
   padding: 1rem 0 0 1rem; }
+
+.header-text-left {
+  width: 100%; }
 
 .header-p {
   font-size: 1.5rem; }
@@ -86,7 +89,7 @@ hr.style {
   /*  padding-top: 2rem;*/ }
 
 .systemet-img {
-  width: 8rem;
+  width: 6rem;
   padding: 1rem; }
 
 #beerList {
@@ -109,7 +112,7 @@ hr.style {
   padding: 1rem;
   margin: 1rem;
   border: 1px solid black;
-  width: 24rem; }
+  width: 23rem; }
 
 .dom-wrapper {
   display: flex;
@@ -119,7 +122,7 @@ hr.style {
   width: 23rem; }
 
 .dom-left {
-  min-width: 99px;
+  min-width: 110px;
   margin-bottom: 1rem; }
 
 .dom-right {
@@ -179,19 +182,23 @@ hr.style {
     max-width: 100% !important;
     padding-left: 2rem !important;
     margin-left: 0rem !important; } }
-@media (min-width: 1200px) {
-  .header-text1 {
-    display: none; } }
-@media (max-width: 1200px) {
+/*@media (min-width: 1250px){
+		.header-text1{
+		display:none;
+	} 
+}*/
+@media (max-width: 1250px) {
   .header-text {
-    display: none;
-    color: red; } }
+    display: none; } }
 @media (max-width: 900px) {
   .container {
     width: 1000px !important;
     max-width: 100% !important;
     padding-left: 2rem !important;
-    margin-left: 0rem !important; } }
+    margin-left: 0rem !important; }
+
+  .dom-wrapper {
+    width: 35rem; } }
 @media (max-width: 1200px) {
   .container {
     width: 1200px !important;

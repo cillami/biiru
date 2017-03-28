@@ -42,9 +42,9 @@ margin-top:0.5rem;
   width:15rem;
 }
 
-.container{
+/*.container{
   padding-right:0 !important;
-}
+}*/
 .container-fluid{
     background-color: lightgrey !important;
 /*  margin:0 !important;*/
@@ -64,6 +64,9 @@ margin-top:0.5rem;
 .header-text{
 width:100%;
 padding: 1rem 0 0 1rem;
+}
+.header-text-left{
+width:100%;
 }
 .header-p{
   font-size: 1.5rem;
@@ -113,7 +116,7 @@ float:right;
 
 }
 .systemet-img{
-  width: 8rem;
+  width: 6rem;
   padding: 1rem;
 }
 #beerList{
@@ -138,7 +141,7 @@ display:flex;
 padding:1rem;
 margin: 1rem;
 border: 1px solid black;
-width:24rem;
+width:23rem;
 }
 .dom-wrapper{
 display:flex;
@@ -149,7 +152,7 @@ width:23rem;
 }
 
 .dom-left{
-min-width:99px;
+min-width:110px;
 margin-bottom:1rem;
 }
 
