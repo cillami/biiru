@@ -19,6 +19,22 @@ $.get('https://api.punkapi.com/v2/beers?ebc_lt=15&page=1&per_page=80', (response
 });
 },
 
+getMediumBeers: function(){
+
+var data = [];
+$.get('https://api.punkapi.com/v2/beers?ebc_gt=15&ebc_lt=50&page=1&per_page=80', (response) => { 
+    data = response;
+    //Only in the callback are we sure that data has been saved,
+    //the anonym function will run on success, when the response
+    //has returned
+    console.log(data);
+    modulePattern.putBeersInDom(data);
+
+}).catch(function(error){
+	console.log("Error");
+});
+},
+
 getDarkBeers: function(){
 
 var data = [];
@@ -73,6 +89,7 @@ $.get('https://api.punkapi.com/v2/beers?' + getBeers, (response) => {
     //the anonym function will run on success, when the response
     //has returned   
     modulePattern.putBeersInDom(data);
+    console.log(data)
 
 }).catch(function(error){
 	console.log("Error");
@@ -85,8 +102,6 @@ selectBeersByFlavour: function (choice) {
             
          },
 
-
-
 sortBeersByFlavour: function(getBeersByFlavour){
 console.log("clackity mackity")
 
@@ -95,26 +110,21 @@ var checkedResult = [];
  
 console.log(checked)
 
-	for(var i = 0; i < 3; i++){
+	for(var i = 0; i < 6; i++){
 
 	if(checked[i].checked == true){
 
 			checkedResult.push(checked[i].value)		
 			console.log(checkedResult);
-	 
 	}
 }
  
 if(checkedResult == ''){
-	 
-
 var node = document.createElement("LI");                // Create a <li> node
 var textnode = document.createTextNode("Please choose a flavour before continuing! (reload the page)");         // Create a text node
 node.appendChild(textnode); // Append the text to <li>
 node.setAttribute('class', 'node-class'); 
 document.getElementById("error-foodList").appendChild(node);
-
-
 
 } else {
 
@@ -174,6 +184,52 @@ $.get('https://api.punkapi.com/v2/beers?' + getBeersByFlavour + '&food=' + "citr
 });
 }
 
+if(element === "curry"){
+
+$.get('https://api.punkapi.com/v2/beers?' + getBeersByFlavour + '&food=' + "curry", (response) => { 
+    var dataCurry = [];
+    dataCurry = response;
+    //Only in the callback are we sure that data has been saved,
+    //the anonym function will run on success, when the response
+    //has returned
+    console.log(dataCurry);
+    modulePattern.putCurryInDom(dataCurry);
+
+}).catch(function(error){
+	console.log("Error");
+});
+}
+if(element === "cheese"){
+
+$.get('https://api.punkapi.com/v2/beers?' + getBeersByFlavour + '&food=' + "cheese", (response) => { 
+    var dataCheese = [];
+    dataCheese = response;
+    //Only in the callback are we sure that data has been saved,
+    //the anonym function will run on success, when the response
+    //has returned
+    console.log(dataCheese);
+    modulePattern.putCheeseInDom(dataCheese);
+
+}).catch(function(error){
+	console.log("Error");
+});
+}
+if(element === "grilled"){
+
+$.get('https://api.punkapi.com/v2/beers?' + getBeersByFlavour + '&food=' + "grilled", (response) => { 
+    var dataGrilled = [];
+    dataGrilled = response;
+    //Only in the callback are we sure that data has been saved,
+    //the anonym function will run on success, when the response
+    //has returned
+    console.log(dataGrilled);
+    modulePattern.putGrilledInDom(dataGrilled);
+
+}).catch(function(error){
+	console.log("Error");
+});
+}
+
 }); //forEach
 } //else-statment
 
@@ -182,6 +238,7 @@ $.get('https://api.punkapi.com/v2/beers?' + getBeersByFlavour + '&food=' + "citr
 addEvent: function(){
 // document.getElementById('foodBeer-btn').addEventListener('click', modulePattern.sortBeersByFlavour);
 document.getElementById('lightBeers-btn').addEventListener('click', modulePattern.getLightBeers);
+document.getElementById('mediumBeers-btn').addEventListener('click', modulePattern.getMediumBeers);
 document.getElementById('darkBeers-btn').addEventListener('click', modulePattern.getDarkBeers);
 // document.getElementById('beers-btn').addEventListener('click', modulePattern.getAllBeers);
 document.getElementById('getAlcBeer').addEventListener('change', modulePattern.selectBeersByAlcohol);
@@ -251,14 +308,7 @@ showPriceInDom: (data) => {
 putBeersInDom: (data) => {
 	
 	console.log("baaaah")
-	// if(data == ''){
-	// 	 console.log("Errorssss")
-	// 	let error = document.getElementById("errorMsg");
 
- //            var showError = `<li>Unfortunately we did not find any match. Change your search and try again.</li>`;
- //            errorMsg.innerHTML = showError;   	
-	// }
-	// else{
 		let beer = document.getElementById("beerList");
         let showHTML = "";
             for (var i = 0; i < data.length ;i++){
@@ -271,19 +321,27 @@ putBeersInDom: (data) => {
 				<div class="dom-right">
 	                <h4>${data[i].name}</h4>
 	                Alcohol: ${data[i].abv}%<br>
-					 <p><h5>Food pairing:</h5> 
+	               	EBC: ${data[i].ebc}<br>
+					 <p><h5>Food pairing </h5>
+					 Click on the links to find recipes!<br>
 					 1. <a href="https://www.google.se/#q=${data[i].food_pairing[0]}" target="_blank">${data[i].food_pairing[0]}</a><br>
 					 2. <a href="https://www.google.se/#q=${data[i].food_pairing[1]}" target="_blank">${data[i].food_pairing[1]}</a><br>
 					 3. <a href="https://www.google.se/#q=${data[i].food_pairing[2]}" target="_blank">${data[i].food_pairing[2]}</a><br>
-         
-
-
                 </div>
                 </div>`;
             beerList.innerHTML = showHTML;
         	}
 
 		// }   
+	},
+
+	ebc: (data) =>{
+		console.log(data[i])
+ for (var i = 0; i < data.length ;i++){
+		if(data[i].ebc === ''){
+			console.logl("hej")
+		}
+}
 	},
 
 putChocolateInDom: (dataChocolate) => {
@@ -323,7 +381,8 @@ console.log(dataChocolate)
 				<div class="dom-right">
 	                <h4>${dataChocolate[i].name}</h4>
 	                Alcohol: ${dataChocolate[i].abv}%<br>
-					 <p><h5>Food pairing:</h5> 
+					 <p><h5>Food pairing </h5>
+					 Click on the links to find recipes!<br>
 					 1. <a href="https://www.google.se/#q=${dataChocolate[i].food_pairing[0]}" target="_blank">${dataChocolate[i].food_pairing[0]}</a><br>
 					 2. <a href="https://www.google.se/#q=${dataChocolate[i].food_pairing[1]}" target="_blank">${dataChocolate[i].food_pairing[1]}</a><br>
 					 3. <a href="https://www.google.se/#q=${dataChocolate[i].food_pairing[2]}" target="_blank">${dataChocolate[i].food_pairing[2]}</a><br>
@@ -339,18 +398,11 @@ console.log(dataChocolate)
 putSpicyInDom: (dataSpicy) => {
 	console.log("baaaah")
 	if(dataSpicy == ''){
-		//  console.log("Errorssss")
-		// let error = document.getElementById("errorMsg");
-
-  //           var showError = `<li><h6>Unfortunately we did not find any beer that match with spciy food. <br>
-  //           Change your search (reload the page) and try again.</h6></li>`;
-  //           error.innerHTML = showError; 
-
-var node = document.createElement("LI");                 // Create a <li> node
-var textnode = document.createTextNode("SPICY: Unfortunately we did not find a match with that alcohol content. Change your search (reload the page) and try again.");         // Create a text node
-node.appendChild(textnode); 
-node.setAttribute('class', 'node-class');                              // Append the text to <li>
-document.getElementById("errorMsg").appendChild(node);  
+		var node = document.createElement("LI");                 // Create a <li> node
+		var textnode = document.createTextNode("SPICY: Unfortunately we did not find a match with that alcohol content. Change your search (reload the page) and try again.");         // Create a text node
+		node.appendChild(textnode); 
+		node.setAttribute('class', 'node-class');                              // Append the text to <li>
+		document.getElementById("errorMsg").appendChild(node);  
 	}
 	else{
 		
@@ -369,7 +421,8 @@ document.getElementById("errorMsg").appendChild(node);
 				<div class="dom-right">
 	                <h4>${dataSpicy[i].name}</h4>
 	                Alcohol: ${dataSpicy[i].abv}%<br>
-					 <p><h5>Food pairing:</h5> 
+					 <p><h5>Food pairing </h5>
+					 Click on the links to find recipes!<br>
 					 1. <a href="https://www.google.se/#q=${dataSpicy[i].food_pairing[0]}" target="_blank">${dataSpicy[i].food_pairing[0]}</a><br>
 					 2. <a href="https://www.google.se/#q=${dataSpicy[i].food_pairing[1]}" target="_blank">${dataSpicy[i].food_pairing[1]}</a><br>
 					 3. <a href="https://www.google.se/#q=${dataSpicy[i].food_pairing[2]}" target="_blank">${dataSpicy[i].food_pairing[2]}</a><br>
@@ -380,18 +433,50 @@ document.getElementById("errorMsg").appendChild(node);
         	}
 		}
 	},
+	putCurryInDom: (dataCurry) => {
+	console.log("baaaah")
+	if(dataCurry == ''){
+		var node = document.createElement("LI");                 // Create a <li> node
+		var textnode = document.createTextNode("CURRY: Unfortunately we did not find a match with that alcohol content. Change your search (reload the page) and try again.");         // Create a text node
+		node.appendChild(textnode); 
+		node.setAttribute('class', 'node-class');                              // Append the text to <li>
+		document.getElementById("errorMsg").appendChild(node);  
+	}
+	else{
+		
+		let beer = document.getElementById("curryList");
+        let showHTML = "";
+        	for (var i = 0; i < dataCurry.length; i++) {
+        		var foods= dataCurry[i].food_pairing;
+        	}
+ 			for (var i = 0; i < foods.length; i++) { 			
+                showHTML += 
+                `
+                <div class="dom-wrapper">
+                	<div class="dom-left">
+                		<img src="${dataCurry[i].image_url}" class="beer-img"><br>
+                	</div>
+				<div class="dom-right">
+	                <h4>${dataCurry[i].name}</h4>
+	                Alcohol: ${dataCurry[i].abv}%<br>
+					 <p><h5>Food pairing </h5>
+					 Click on the links to find recipes!<br>
+					 1. <a href="https://www.google.se/#q=${dataCurry[i].food_pairing[0]}" target="_blank">${dataCurry[i].food_pairing[0]}</a><br>
+					 2. <a href="https://www.google.se/#q=${dataCurry[i].food_pairing[1]}" target="_blank">${dataCurry[i].food_pairing[1]}</a><br>
+					 3. <a href="https://www.google.se/#q=${dataCurry[i].food_pairing[2]}" target="_blank">${dataCurry[i].food_pairing[2]}</a><br>
+         
+                </div>
+                </div>`;
+            curryList.innerHTML = showHTML;
+        	}
+		}
+	},
 
 putCitrusInDom: (dataCitrus) => {
 	
  
 	console.log("baaaah")
 	if(dataCitrus == ''){
-		// let error = document.getElementById("errorMsg");
-
-  //           var showError = `<li><h6>Unfortunately we did not find any beer that match with citrusy flavours. <br>
-  //           Change your search (reload the page) and try again.</h6></li>`;
-  //           error.innerHTML = showError; 
-
 		var node = document.createElement("LI");                 // Create a <li> node
 		var textnode = document.createTextNode("CITRUS: Unfortunately we did not find a match with that alcohol content. Change your search (reload the page) and try again.");         // Create a text node
 		node.appendChild(textnode); 
@@ -418,17 +503,105 @@ putCitrusInDom: (dataCitrus) => {
 				<div class="dom-right">
 	                <h4>${dataCitrus[i].name}</h4>
 	                Alcohol: ${dataCitrus[i].abv}%<br>
-					 <p><h5>Food pairing:</h5> 
-					 1. <a href="https://www.google.se/#q=${dataCitrus[i].food_pairing[0]}" target="_blank">${dataCitrus[i].food_pairing[0]}.</a><br>
-					 2. <a href="https://www.google.se/#q=${dataCitrus[i].food_pairing[1]}" target="_blank">${dataCitrus[i].food_pairing[1]}.</a><br>
-					 3. <a href="https://www.google.se/#q=${dataCitrus[i].food_pairing[2]}" target="_blank">${dataCitrus[i].food_pairing[2]}.</a><br>
+					 <p><h5>Food pairing </h5>
+					 Click on the links to find recipes!<br>
+					 1. <a href="https://www.google.se/#q=${dataCitrus[i].food_pairing[0]}" target="_blank">${dataCitrus[i].food_pairing[0]}</a><br>
+					 2. <a href="https://www.google.se/#q=${dataCitrus[i].food_pairing[1]}" target="_blank">${dataCitrus[i].food_pairing[1]}</a><br>
+					 3. <a href="https://www.google.se/#q=${dataCitrus[i].food_pairing[2]}" target="_blank">${dataCitrus[i].food_pairing[2]}</a><br>
          
                 </div>
                 </div>`;
             citrusList.innerHTML = showHTML;
         	}
 		}
+	},
+	putCheeseInDom: (dataCheese) => {
+	
+ 
+	console.log("baaaah")
+	if(dataCheese == ''){
+		var node = document.createElement("LI");                 // Create a <li> node
+		var textnode = document.createTextNode("CHEESE: Unfortunately we did not find a match with that alcohol content. Change your search (reload the page) and try again.");         // Create a text node
+		node.appendChild(textnode); 
+		node.setAttribute('class', 'node-class');                             // Append the text to <li>
+		document.getElementById("errorMsg").appendChild(node);     // Append <li> to <ul> with id="myList"
+
 	}
+	else{
+		let beer = document.getElementById("cheeseList");
+        let showHTML = "";
+        	for (var i = 0; i < dataCheese.length; i++) {
+        		var foods= dataCheese[i].food_pairing;
+        	}
+ 			for (var i = 0; i < foods.length; i++) {
+ 				console.log(foods[i]);
+ 				console.log(dataCheese);
+ 			
+                showHTML += 
+                `
+                <div class="dom-wrapper">
+                	<div class="dom-left">
+                		<img src="${dataCheese[i].image_url}" class="beer-img"><br>
+                	</div>
+				<div class="dom-right">
+	                <h4>${dataCheese[i].name}</h4>
+	                Alcohol: ${dataCheese[i].abv}%<br>
+					 <p><h5>Food pairing </h5>
+					 Click on the links to find recipes!<br>
+					 1. <a href="https://www.google.se/#q=${dataCheese[i].food_pairing[0]}" target="_blank">${dataCheese[i].food_pairing[0]}</a><br>
+					 2. <a href="https://www.google.se/#q=${dataCheese[i].food_pairing[1]}" target="_blank">${dataCheese[i].food_pairing[1]}</a><br>
+					 3. <a href="https://www.google.se/#q=${dataCheese[i].food_pairing[2]}" target="_blank">${dataCheese[i].food_pairing[2]}</a><br>
+         
+                </div>
+                </div>`;
+            cheeseList.innerHTML = showHTML;
+        	}
+		}
+	},
+		putGrilledInDom: (dataGrilled) => {
+	
+ 
+	console.log("baaaah")
+	if(dataGrilled == ''){
+		var node = document.createElement("LI");                 // Create a <li> node
+		var textnode = document.createTextNode("CHEESE: Unfortunately we did not find a match with that alcohol content. Change your search (reload the page) and try again.");         // Create a text node
+		node.appendChild(textnode); 
+		node.setAttribute('class', 'node-class');                             // Append the text to <li>
+		document.getElementById("errorMsg").appendChild(node);     // Append <li> to <ul> with id="myList"
+
+	}
+	else{
+		let beer = document.getElementById("grilledList");
+        let showHTML = "";
+        	for (var i = 0; i < dataGrilled.length; i++) {
+        		var foods= dataGrilled[i].food_pairing;
+        	}
+ 			for (var i = 0; i < foods.length; i++) {
+ 				console.log(foods[i]);
+ 				console.log(dataGrilled);
+ 			
+                showHTML += 
+                `
+                <div class="dom-wrapper">
+                	<div class="dom-left">
+                		<img src="${dataGrilled[i].image_url}" class="beer-img"><br>
+                	</div>
+				<div class="dom-right">
+	                <h4>${dataGrilled[i].name}</h4>
+	                Alcohol: ${dataGrilled[i].abv}%<br>
+					 <p><h5>Food pairing </h5>
+					 Click on the links to find recipes!<br>
+					 1. <a href="https://www.google.se/#q=${dataGrilled[i].food_pairing[0]}" target="_blank">${dataGrilled[i].food_pairing[0]}</a><br>
+					 2. <a href="https://www.google.se/#q=${dataGrilled[i].food_pairing[1]}" target="_blank">${dataGrilled[i].food_pairing[1]}</a><br>
+					 3. <a href="https://www.google.se/#q=${dataGrilled[i].food_pairing[2]}" target="_blank">${dataGrilled[i].food_pairing[2]}</a><br>
+         
+                </div>
+                </div>`;
+            grilledList.innerHTML = showHTML;
+        	}
+		}
+	}
+
 
 };
 })(); 

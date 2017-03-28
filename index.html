@@ -26,14 +26,14 @@
 
 <!-- Left col -->
       <div class="col-sm-12 col-md-4 col-lg-4 lefty">
-      <h3 class="header-text1">Find food to pair up with your beer!</h3>
-
-<div class="checkboxes">
+      <h3 class="header-text-left">BrewDog beer, food and recipes!</h3>
+        <div class="checkboxes">
 
 <!--                   <img src="img/brewdog_diepunk.jpg" class="logo-diepunk"> -->
        <!--              <h1>Time to eat?</h1> -->
-            <p>Find a beer that will match your choice of flavor. <br>
-            Pick a flavor then the alcohol content. <br>
+            
+          <p>Here are a few flavours to help you find something to eat alongside your beer.    
+          Pick whatever flavours you like and then the alcohol content. <br>
 
           <form>
             <label class="checkbox-inline">
@@ -43,14 +43,23 @@
               <input type="checkbox" class="checkIt" value="chocolate"> Chocolate
             </label>
             <label class="checkbox-inline">
-              <input type="checkbox" class="checkIt" value="citrus"> Citrus
+              <input type="checkbox" class="checkIt" value="citrus"> Citrusy
+            </label>
+            <br>
+            <label class="checkbox-inline">
+              <input type="checkbox" class="checkIt" value="curry"> Curry
+            </label>
+            <label class="checkbox-inline">
+              <input type="checkbox" class="checkIt" value="cheese"> Cheese
+            </label>
+            <label class="checkbox-inline">
+              <input type="checkbox" class="checkIt" value="grilled"> Grilled flavor
             </label>
           </form>
 <!--                    <br><button id="foodBeer-btn" class="all-btn">Match a beer</button>  -->
-
-            <div class="selector-food">Find a match by choosing alcohol content: <br> 
+<!--             <div class="selector-food">Food and Beer pairing <br>  -->
               <select id="getAlcBeerByFlavour" class="selector">
-                <option value="">Choose here</option>
+                <option value="">Choose alcohol content</option>
                 <option value="abv_gt=0&abv_lt=1">Alcohol free</option>
                 <option value="abv_gt=2&abv_lt=5">2%-4%</option>
                 <option value="abv_gt=5&abv_lt=8">5%-7%</option>
@@ -59,65 +68,54 @@
                 <option value="abv_gt=14&abv_lt=17">14%-16%</option>
                 <option value="abv_gt=17&abv_lt=19">17%-18%</option>
               </select>
-              <div id="error-foodList"></div>
-            </div>
-          </div> 
-      <hr class="style">
-        
-
-        <div class=buttons>
-          <button id="lightBeers-btn" class="all-btn">Light beers</button>
-          <button id="darkBeers-btn" class="all-btn">Dark beers</button> 
+            <div id="error-foodList"></div>
         </div>
-<!--           <button id="beers-btn" class="all-btn">Show all of 'em (p. 1)</button>  -->
-    <hr class="style">
-               <div>
-               <p>Get all beers (3 pages): <br> 
+  <!--       </div>  div left column-->
+<hr class="style">
+        
+            <div>
+            <h4>All BrewDogs</h4>
+               <p>If you don't know what food you are craving<br>
+               Just get all BrewDog beers and checkout the food pairing! <br> 
               <select id="getAllBeer" class="selector">
                 <option value="">Choose page</option>
                 <option value="page=1&per_page=80">Page 1</option>
                 <option value="page=2&per_page=80">Page 2</option>
                 <option value="page=3&per_page=80">Page 3</option>
               </select>      
- <hr class="style">
-              Sort beer by alcohol content:  <br>
+<hr class="style">
+            <h4>Sort by alcohol content</h4>
               <select id="getAlcBeer" class="selector">
-                <option value="">Choose Beer</option>
+                <option value="">Choose alcohol content</option>
                 <option value="abv_gt=0&abv_lt=1">Alcohol free</option>
-                <option value="abv_gt=2&abv_lt=3">2%</option>
-                <option value="abv_gt=3&abv_lt=4">3%</option>
-                <option value="abv_gt=4&abv_lt=5&page=1&per_page=34">4%</option>
-                <option value="abv_gt=5&abv_lt=6">5%</option>
-                <option value="abv_gt=6&abv_lt=7&page=1&per_page=30">6%</option>
-                <option value="abv_gt=7&abv_lt=8&page=1&per_page=38">7%</option>
-                <option value="abv_gt=8&abv_lt=9">8%</option>                
-                <option value="abv_gt=9&abv_lt=10">9%</option>
-                <option value="abv_gt=10&abv_lt=11">10%</option>
-                <option value="abv_gt=11&abv_lt=12">11%</option>
-                <option value="abv_gt=12&abv_lt=13">12%</option>                
-                <option value="abv_gt=13&abv_lt=14">13%</option>
-                <option value="abv_gt=14&abv_lt=15">14%</option>
-                <option value="abv_gt=15&abv_lt=16">15%</option>
-                <option value="abv_gt=16&abv_lt=17">16%</option>
-                <option value="abv_gt=17&abv_lt=18">17%</option>
-                <option value="abv_gt=18&abv_lt=19">18%</option>
+                <option value="abv_gt=2&abv_lt=5&page=1&per_page=80">2%-4%</option>
+                <option value="abv_gt=5&abv_lt=8&page=1&per_page=80">5%-7%</option>
+                <option value="abv_gt=8&abv_lt=11&page=1&per_page=80">8%-10%</option>
+                <option value="abv_gt=11&abv_lt=14">11%-13%</option>
+                <option value="abv_gt=14&abv_lt=17">14%-16%</option>
+                <option value="abv_gt=17&abv_lt=19">17%-18%</option>
                 <option value="abv_gt=54">The End Of History 55%</option>
               </select>
                 <hr class="style">
-        </div> 
-
-        
-
+          </div> 
+        <div class=buttons>
+          <h4>Light, medium and dark beers</h4>
+          The EBC unit informs the colour of the beer. The higher the EBC-value, the darker the beer. <br>
+          Light beer: EBC less than 15. Medium beer: EBC between 15-50. Dark beer: EBC greater than 50<br> 
+          <button id="lightBeers-btn" class="all-btn">Light beer</button>
+          <button id="mediumBeers-btn" class="all-btn">Medium beer</button> 
+          <button id="darkBeers-btn" class="all-btn">Dark beer</button> 
+        </div>
+<!--           <button id="beers-btn" class="all-btn">Show all of 'em (p. 1)</button>  -->
+<hr class="style">
           <div class="systemet">
   <!--         <img src="img/systemet_svartvit.png" class="logo-systemet"> -->
+            <h4>BrewDogs at Systembolaget</h4>
 
-            BrewDog beers available at Systembolaget:<br>
             <!--         <input type="text" id="searchInput" maxlength="43" placeholder="Search for a beer"> -->
             <button id="search-btn" class="all-btn">Check prices</button>
           </div> 
-      
-
- 
+      </div> <!-- End left col -->
   
 <!-- Right col -->
       <div class="col-md-8 col-lg-8 col-sm-12 d-flex flex-row  flex-wrap align-content-center">
@@ -126,6 +124,9 @@
         <div id="spicyList" class="d-flex flex-row flex-wrap"></div>
         <div id="chocolateList" class="d-flex flex-row flex-wrap"></div>
         <div id="citrusList" class="d-flex flex-row flex-wrap"></div>
+        <div id="curryList" class="d-flex flex-row flex-wrap"></div>
+        <div id="cheeseList" class="d-flex flex-row flex-wrap"></div>
+        <div id="grilledList" class="d-flex flex-row flex-wrap"></div>
         <div id="errorMsg"></div>
 
       </div>
@@ -134,10 +135,11 @@
 
 <!-- End container -->   
 </div>
-<footer class="footer">
-<img src="img/brewdog_diepunk.jpg" class="img-footer"> 
-</footer>
 
-<script src="script/main.js"></script>  
-</body>
+      <footer class="footer">
+          <img src="img/brewdog_diepunk.jpg" class="img-footer"> 
+      </footer>
+
+    <script src="script/main.js"></script>  
+  </body>
 </html>
