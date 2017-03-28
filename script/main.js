@@ -88,7 +88,7 @@ selectBeersByFlavour: function (choice) {
 
 
 sortBeersByFlavour: function(getBeersByFlavour){
-
+console.log("clackity mackity")
 
 var checked = document.getElementsByClassName("checkIt");
 var checkedResult = [];
@@ -180,7 +180,7 @@ $.get('https://api.punkapi.com/v2/beers?' + getBeersByFlavour + '&food=' + "citr
 },
 
 addEvent: function(){
-// document.getElementById('foodBeer-btn').addEventListener('click', modulePattern.getUserInput);
+// document.getElementById('foodBeer-btn').addEventListener('click', modulePattern.sortBeersByFlavour);
 document.getElementById('lightBeers-btn').addEventListener('click', modulePattern.getLightBeers);
 document.getElementById('darkBeers-btn').addEventListener('click', modulePattern.getDarkBeers);
 // document.getElementById('beers-btn').addEventListener('click', modulePattern.getAllBeers);

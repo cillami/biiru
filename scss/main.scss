@@ -4,8 +4,8 @@ body{
   display: flex;
   align-items: center;
   flex-direction: column;
-  font: 16px/24px "Source Sans Pro", sans-serif !important;
-
+  font: 14px/24px "Source Sans Pro", sans-serif !important;
+ 
 
 /*  letter-spacing: 0.2em;*/
 }
@@ -14,10 +14,12 @@ body{
   box-sizing: border-box;
 }
 
+ 
+
 /*------BUTTONS------*/
 
 .all-btn{
-  padding:0.5rem;
+  padding:0.1rem;
   width:7rem;
   border-radius: 0.2rem;
   border: 1px solid black;
@@ -36,12 +38,17 @@ margin-top:0.5rem;
 /*border: 1px solid black;*/
 
 }
+.selector{
+  width:15rem;
+}
 
-
+.container{
+  padding-right:0 !important;
+}
 .container-fluid{
     background-color: lightgrey !important;
-/*  margin:0 !important;
-  padding:0 !important;*/
+/*  margin:0 !important;*/
+
 }
 
 .header{
@@ -62,14 +69,21 @@ padding: 1rem 0 0 1rem;
   font-size: 1.5rem;
 }
 
-.footer{
- 
-}
 .row{
   background-color: white !important;
   margin-top: 7rem;
 }
 
+
+/* Gradient transparent - color - transparent */
+
+hr.style {
+    border: 0;
+    width:15rem;
+    height: 1px;
+    margin:0.8rem 0 0.8rem 0;
+    background-image: linear-gradient(to right, rgba(255, 160, 122, 0.2), rgba(255, 160, 122, 1), rgba(255, 160, 122, 0.2));
+}
 .logo{
 
 height:5.5rem;
@@ -84,12 +98,7 @@ height:10rem;
 }
 .img-footer{
   width:28%;
-/*height:20%;*/
 float:right;
-/*display:block;
-margin:auto;
-margin-right:0 !important;
-padding-right:0 !important;*/ 
 
 }
 
@@ -129,7 +138,7 @@ display:flex;
 padding:1rem;
 margin: 1rem;
 border: 1px solid black;
-width:36rem;
+width:24rem;
 }
 .dom-wrapper{
 display:flex;
@@ -152,6 +161,9 @@ padding-left:1rem;
 .selector-food{
 /*  margin-bottom:2.5rem;*/
 }
+
+
+
 
 /*----*/
 
