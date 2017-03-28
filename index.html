@@ -6,7 +6,7 @@
   <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
   <title>AJAX and BEER</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+<!--     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet"> -->
   <link rel="stylesheet" href="css/main.css">
 
  
@@ -25,8 +25,45 @@
     <div class="row">
 
 <!-- Left col -->
-      <div class="col-sm-12 col-md-4 col-lg-3 lefty">
+      <div class="col-sm-12 col-md-4 col-lg-4 lefty">
       <h3 class="header-text1">Beer For Punks <br>Get to know BrewDog Beers!</h3>
+
+<div class="checkboxes">
+
+<!--                   <img src="img/brewdog_diepunk.jpg" class="logo-diepunk"> -->
+       <!--              <h1>Time to eat?</h1> -->
+            <p>Find a beer that will match your choice of flavor. <br>
+            Pick a flavor then the alcohol content. <br>
+
+          <form>
+            <label class="checkbox-inline">
+              <input type="checkbox" class="checkIt" value="spicy">Spicy
+            </label>
+            <label class="checkbox-inline">
+              <input type="checkbox" class="checkIt" value="chocolate">Chocolate
+            </label>
+            <label class="checkbox-inline">
+              <input type="checkbox" class="checkIt" value="citrus">Citrus
+            </label><br><br>
+         <!--    <button id="foodBeer-btn" class="all-btn">Match a beer</button> -->
+          </form>
+
+
+            <div class="selector-food"> How much alcohol?  
+              <select id="getAlcBeerByFlavour">
+                <option value="">Choose Beer</option>
+                <option value="abv_gt=0&abv_lt=1">Alcohol free</option>
+                <option value="abv_gt=2&abv_lt=5">2%-4%</option>
+                <option value="abv_gt=5&abv_lt=8">5%-7%</option>
+                <option value="abv_gt=8&abv_lt=11">8%-10%</option>
+                <option value="abv_gt=11&abv_lt=14">11%-13%</option>
+                <option value="abv_gt=14&abv_lt=17">14%-16%</option>
+                <option value="abv_gt=17&abv_lt=19">17%-18%</option>
+              </select>
+              <div id="error-foodList"></div>
+            </div>
+          </div>
+      
         <div class=buttons>
           <button id="lightBeers-btn" class="all-btn">Light beers</button>
           <button id="darkBeers-btn" class="all-btn">Dark beers</button> 
@@ -69,52 +106,7 @@
                
         </div>
 
-        <div class="checkboxes">
-
-<!--                   <img src="img/brewdog_diepunk.jpg" class="logo-diepunk"> -->
-                    <h1>Time to eat?</h1>
-                    <p>Find a beer that will match your choice of flavor. <br>
-            Pick a flavor then the alcohol content. <br>
-
-          <form>
-            <label class="checkbox-inline">
-              <input type="checkbox" class="checkIt" value="spicy">Spicy
-            </label>
-            <label class="checkbox-inline">
-              <input type="checkbox" class="checkIt" value="chocolate">Chocolate
-            </label>
-            <label class="checkbox-inline">
-              <input type="checkbox" class="checkIt" value="citrus">Citrus
-            </label><br><br>
-         <!--    <button id="foodBeer-btn" class="all-btn">Match a beer</button> -->
-          </form>
-
-
-            <div class="selector-food"> How much alcohol?  
-              <select id="getAlcBeerByFlavour">
-                <option value="">Choose Beer</option>
-                <option value="abv_gt=0&abv_lt=1">Alcohol free</option>
-                <option value="abv_gt=2&abv_lt=3">2%</option>
-                <option value="abv_gt=3&abv_lt=4">3%</option>
-                <option value="abv_gt=4&abv_lt=5">4%</option>
-                <option value="abv_gt=5&abv_lt=6">5%</option>
-                <option value="abv_gt=6&abv_lt=7">6%</option>
-                <option value="abv_gt=7&abv_lt=8">7%</option>
-                <option value="abv_gt=8&abv_lt=9">8%</option>                
-                <option value="abv_gt=9&abv_lt=10">9%</option>
-                <option value="abv_gt=10&abv_lt=11">10%</option>
-                <option value="abv_gt=11&abv_lt=12">11%</option>
-                <option value="abv_gt=12&abv_lt=13">12%</option>                
-                <option value="abv_gt=13&abv_lt=14">13%</option>
-                <option value="abv_gt=14&abv_lt=15">14%</option>
-                <option value="abv_gt=15&abv_lt=16">15%</option>
-                <option value="abv_gt=16&abv_lt=17">16%</option>
-                <option value="abv_gt=17&abv_lt=18">17%</option>
-                <option value="abv_gt=18&abv_lt=19">18%</option>
-              </select>
-              <div id="error-foodList"></div>
-            </div>
-          </div>
+        
 
           <div class="systemet">
   <!--         <img src="img/systemet_svartvit.png" class="logo-systemet"> -->
@@ -127,7 +119,7 @@
  
   
 <!-- Right col -->
-      <div class="col-md-8 col-lg-9 col-sm-12 d-flex flex-row  flex-wrap align-content-center">
+      <div class="col-md-8 col-lg-8 col-sm-12 d-flex flex-row  flex-wrap align-content-center">
         <ul id="errorMsg"></ul>
         <div id="beerList" class="d-flex flex-row flex-wrap"></div>
         <div id="spicyList" class="d-flex flex-row flex-wrap"></div>
