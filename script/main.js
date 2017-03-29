@@ -35,7 +35,7 @@ getMediumBeers: function(){
 $(document).ajaxStart(function () {
 	var text = "Beers are loading, please wait..";
     loadingDiv.innerHTML += text;
-    $("#loading").show();
+    $("#loadingDiv").show();
 });
 
 var data = [];
@@ -120,7 +120,7 @@ getAllBeers: function(getAllBeers){
 $(document).ajaxStart(function () {
 	var text = "Beers are loading, please wait..";
     loadingDiv.innerHTML += text;
-    $("#loadingDiv").show();
+    $("#loading").show();
 });
 
 var data = [];
@@ -129,7 +129,7 @@ $.get('https://api.punkapi.com/v2/beers?' + getAllBeers, (response) => {
     //Only in the callback are we sure that data has been saved,
     //the anonym function will run on success, when the response has returned
     $(document).ajaxComplete(function () {
-    $("#loading").hide();
+    $("#loadingDiv").hide();
 });
     modulePattern.putBeersInDom(data);
 }).catch(function(error){
