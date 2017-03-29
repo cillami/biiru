@@ -26,7 +26,7 @@ Systembolaget, API med information om Systembolagets alla alkoholhaltiga drycker
 
 ## Arbetsprocess
 
-Det tog lång tid att komma underfund med vad för sorts API som jag ville använda. Tillslut hittade jag BrewDogs API om öl som jag tänkte att jag skulle kunna göra något roligt med. Jag har skrivit min kod i ett module pattern objekt och försökt strukturera och separerat den på ett logiskt sätt. Med Bootstrap och egen css har sidan blivit responsiv. Jag har använt jQuery get-metod för att hämta data asynkront och lagt in en loading indikator för att meddela användaren när data hämtas. 
+Det tog lång tid att komma underfund med vad för sorts API som jag ville använda. Tillslut hittade jag BrewDogs API om öl som jag tänkte att jag skulle kunna göra något roligt med. Jag har skrivit min kod i ett module pattern objekt och försökt strukturera och separerat den på ett logiskt sätt. Med Bootstrap och egen css har sidan blivit responsiv. Jag har använt jQuery get-metod för att hämta data asynkront och lagt in en loading indikator som meddelar användaren att data hämtas genom en gif + ett meddelande. 
 
 ## To do-lista
 * Vissa properties från APIt är null, den datan vill jag inte visa i min HTML
