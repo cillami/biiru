@@ -8,6 +8,13 @@ body {
 * {
   box-sizing: border-box; }
 
+.container-fluid {
+  background-color: lightgrey !important; }
+
+.row {
+  background-color: white !important;
+  margin-top: 7rem; }
+
 /*------BUTTONS------*/
 .all-btn {
   padding: 0.1rem;
@@ -20,7 +27,7 @@ body {
   box-shadow: 3px 3px  lightgrey;
   font-size: 0.8rem !important; }
 
-/*------CHeckboxes------*/
+/*------CHECKBOX n SELECTOR------*/
 .checkboxes {
   margin-top: 0.5rem;
   /*padding:0.5rem;*/
@@ -29,18 +36,15 @@ body {
 .selector {
   width: 15rem; }
 
-/*.container{
-  padding-right:0 !important;
-}*/
-.container-fluid {
-  background-color: lightgrey !important;
-  /*  margin:0 !important;*/ }
-
+/*.selector-food{
+  margin-bottom:2.5rem;
+}
+*/
+/*------HEADER------*/
 .header {
   background-color: black !important;
   width: 100%;
   display: flex;
-  /*    padding:1rem 0 0 1rem;*/
   position: fixed;
   z-index: 2000;
   opacity: 0.9;
@@ -56,10 +60,7 @@ body {
 .header-p {
   font-size: 1.5rem; }
 
-.row {
-  background-color: white !important;
-  margin-top: 7rem; }
-
+/*----- HR -----*/
 /* Gradient transparent - color - transparent */
 hr.style {
   border: 0;
@@ -68,6 +69,7 @@ hr.style {
   margin: 0.8rem 0 0.8rem 0;
   background-image: linear-gradient(to right, rgba(255, 160, 122, 0.2), lightsalmon, rgba(255, 160, 122, 0.2)); }
 
+/*----- IMAGES -----*/
 .logo {
   height: 5.5rem; }
 
@@ -85,13 +87,11 @@ hr.style {
   width: 5.5rem;
   padding-left: 1rem; }
 
-.systemet {
-  /*  padding-top: 2rem;*/ }
-
 .systemet-img {
   width: 6rem;
   padding: 1rem; }
 
+/*----- DIV LISTS -----*/
 #beerList {
   list-style-type: none;
   margin-bottom: 1rem;
@@ -107,6 +107,7 @@ hr.style {
 .node-class {
   padding-bottom: 1rem; }
 
+/*----- DOM -----*/
 .dom-wrapper-systembolaget {
   display: flex;
   padding: 1rem;
@@ -129,41 +130,6 @@ hr.style {
   margin-bottom: 1rem;
   padding-left: 1rem; }
 
-.selector-food {
-  /*  margin-bottom:2.5rem;*/ }
-
-/*----*/
-/*#custom-search-input{
-    padding: 3px;
-    border: solid 1px #E4E4E4;
-    border-radius: 6px;
-    background-color: #fff;
-}
-
-#custom-search-input input{
-    border: 0;
-    box-shadow: none;
-}
-
-#custom-search-input button{
-    margin: 2px 0 0 0;
-    background: none;
-    box-shadow: none;
-    border: 0;
-    color: #666666;
-    padding: 0 8px 0 10px;
-    border-left: solid 1px #ccc;
-}
-
-#custom-search-input button:hover{
-    border: 0;
-    box-shadow: none;
-    border-left: solid 1px #ccc;
-}
-
-#custom-search-input .glyphicon-search{
-    font-size: 23px;
-}*/
 @media (min-width: 1200px) {
   .container {
     width: 1800px !important;
