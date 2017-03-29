@@ -1,41 +1,7 @@
-
+//Module pattern object
 const modulePattern = (function(){
 
 return {
-
-getBeerPrice: function() { 
-
-	$.ajax(
-	{
-    url: 'https://karlroos-systemet.p.mashape.com/product?limit=100&name=brewdog&order_by=name', // URL to the API
-    type: 'GET', // The HTTP Method, GET POST PUT DELETE etc
-    data: {}, // Additional parameters here
-    dataType: 'json',
-    ajaxStart: 
-	$(document).ajaxStart(function () {
-	var text = "Beers are loading, please wait..";
-    loadingDiv.innerHTML += text;
-    $("#loading").show();
-	}),
-    success: function(data) {
-        //Change data.source to data.something , where something is whichever part of the object you want returned.
-        //To see the whole object you can output it to your browser console using:
-	    $(document).ajaxComplete(function () {
-	    $("#loadingDiv").hide();
-
-		});
-	    modulePattern.showPriceInDom(data);
-        },
-    error: function(xhr) { 
-    console.log(xhr)
-    alert("ERROR! Something went wrong please try again. \n \n" + xhr.responseText);
-	},
-    beforeSend: function(xhr) {
-    xhr.setRequestHeader("X-Mashape-Authorization", "6myQMMIXtCmshRYsqqNr3ik67JNxp1JM1SIjsnsY9FE7luqhcI"); 
-    // Mashape key
-    }
-});
-},
 
 getLightBeers: function(){
 $(document).ajaxStart(function () {
@@ -59,7 +25,7 @@ $.get('https://api.punkapi.com/v2/beers?ebc_lt=15&page=1&per_page=80', (response
     alert("ERROR! Something went wrong please try again. \n \n" + xhr.responseText);
 });
 
-
+document.getElementById('lightBeers-btn').addEventListener('click', modulePattern.getLightBeers);
 ;
 },
 
@@ -106,9 +72,46 @@ $.get('https://api.punkapi.com/v2/beers?ebc_gt=50&page=1&per_page=80', (response
 });
     modulePattern.putBeersInDom(data);
 }).catch(function(error){
-	console.log("Error");
+	alert("Error");
 });
 },
+
+getBeerPrice: function() { 
+
+	$.ajax(
+	{
+    url: 'https://karlroos-systemet.p.mashape.com/product?limit=100&name=brewdog&order_by=name', // URL to the API
+    type: 'GET', // The HTTP Method, GET POST PUT DELETE etc
+    data: {}, // Additional parameters here
+    dataType: 'json',
+    ajaxStart: 
+	$(document).ajaxStart(function () {
+	var text = "Beers are loading, please wait..";
+    loadingDiv.innerHTML += text;
+    $("#loading").show();
+	}),
+    success: function(data) {
+        //Change data.source to data.something , where something is whichever part of the object you want returned.
+
+	    $(document).ajaxComplete(function () {
+	    $("#loadingDiv").hide();
+
+		});
+	    modulePattern.showPriceInDom(data);
+        },
+
+	//error Object
+	error: function(errorObject, statusText, errorThrown) {
+		alert("ERROR! \n \n" + errorThrown);
+	},
+    beforeSend: function(xhr) {
+    xhr.setRequestHeader("X-Mashape-Authorization", "6myQMMIXtCmshRYsqqNr3ik67JNxp1JM1SIjsnsY9FE7luqhcI"); 
+    // Mashape key
+    }
+});
+},
+
+
 
 selectAllBeers: function (choice) {
     var getAllBeers = modulePattern.getAllBeers(choice.target.value);        
@@ -120,9 +123,9 @@ $(document).ajaxStart(function () {
     loadingDiv.innerHTML += text;
     $("#loadingDiv").show();
 });
-
+//v2/beers?
 var data = [];
-$.get('https://api.punkapi.com/v2/beers?' + getAllBeers, (response) => { 
+$.get('https://api.punkapi.com/' + getAllBeers, (response) => { 
     data = response;
     //Only in the callback are we sure that data has been saved,
     //the anonym function will run on success, when the response has returned
@@ -131,7 +134,7 @@ $.get('https://api.punkapi.com/v2/beers?' + getAllBeers, (response) => {
 });
     modulePattern.putBeersInDom(data);
 }).catch(function(error){
-	console.log("Error");
+	alert("Error");
 });
 },
 
@@ -160,7 +163,7 @@ $.get('https://api.punkapi.com/v2/beers?' + getBeers, (response) => {
     modulePattern.putBeersInDom(data);
 
 }).catch(function(error){
-	console.log("Error");
+	alert("Error");
 });
 },
 
@@ -213,7 +216,7 @@ if(element === "spicy"){
 		modulePattern.putSpicyInDom(dataSpicy);
 
 	}).catch(function(error){
-		console.log("Error");
+		alert("Error")
 	});
 	}
 
@@ -237,7 +240,7 @@ if(element === "chocolate") {
 		});
 	     modulePattern.putChocolateInDom(dataChocolate);
 	}).catch(function(error){
-		console.log("Error");
+		alert("Error");
 	});
 
 	}
@@ -253,16 +256,14 @@ if(element === "citrus"){
 	    var dataCitrus = [];
 	    dataCitrus = response;
 	    //Only in the callback are we sure that data has been saved,
-	    //the anonym function will run on success, when the response
-	    //has returned
-	    //has returned   
+	    //the anonym function will run on success, when the response has returned 
 	    $(document).ajaxComplete(function () {
     	$("#loadingDiv").hide();
 		});
 	    modulePattern.putCitrusInDom(dataCitrus);
 
 	}).catch(function(error){
-		console.log("Error");
+		alert("Error");
 	});
 	}
 
@@ -284,7 +285,7 @@ if(element === "curry"){
 	    modulePattern.putCurryInDom(dataCurry);
 
 	}).catch(function(error){
-		console.log("Error");
+		alert("Error");
 	});
 	}
 if(element === "cheese"){
@@ -305,7 +306,7 @@ if(element === "cheese"){
 	    modulePattern.putCheeseInDom(dataCheese);
 
 	}).catch(function(error){
-		console.log("Error");
+		alert("Error");
 	});
 	}
 if(element === "grilled"){
@@ -326,24 +327,12 @@ if(element === "grilled"){
 	    modulePattern.putGrilledInDom(dataGrilled);
 
 	}).catch(function(error){
-		console.log("Error");
+		alert("Error");
 	});
 	}
 
 }); //forEach
 } //else-statment
-
-},
-
-addEvent: function(){
-// document.getElementById('foodBeer-btn').addEventListener('click', modulePattern.sortBeersByFlavour);
-document.getElementById('lightBeers-btn').addEventListener('click', modulePattern.getLightBeers);
-document.getElementById('mediumBeers-btn').addEventListener('click', modulePattern.getMediumBeers);
-document.getElementById('darkBeers-btn').addEventListener('click', modulePattern.getDarkBeers);
-document.getElementById('getAlcBeer').addEventListener('change', modulePattern.selectBeersByAlcoholContent);
-document.getElementById('getAllBeer').addEventListener('change', modulePattern.selectAllBeers);
-document.getElementById('getAlcBeerByFlavour').addEventListener('change', modulePattern.selectAlcoholContentAndFlavour);
-document.getElementById('search-btn').addEventListener('click', modulePattern.getBeerPrice);
 
 },
 
@@ -406,30 +395,14 @@ putBeersInDom: (data) => {
                 </div>`;
             beerList.innerHTML = showHTML;
         	}
-
-		// }   
-	},
-
-	ebc: (data) =>{
-		console.log(data[i])
- for (var i = 0; i < data.length ;i++){
-		if(data[i].ebc === ''){
-			console.logl("hej")
-		}
-}
 	},
 
 putChocolateInDom: (dataChocolate) => {
-	
- 
-console.log(dataChocolate)
 
 	if(dataChocolate == ''){
-		//  console.log("Errorssss")
-		// let error = document.getElementById("errorMsg");
 
 		var node = document.createElement("LI");                // Create a <li> node
-		var textnode = document.createTextNode("C: Unfortunately we did not find a match with that alcohol content. Change your search (reload the page) and try again.");         // Create a text node
+		var textnode = document.createTextNode("CHOCOLATE: Unfortunately we did not find a match with that alcohol content. Change your search (reload the page) and try again.");         // Create a text node
 		node.appendChild(textnode); // Append the text to <li>
 		node.setAttribute('class', 'node-class'); 
 		document.getElementById("errorMsg").appendChild(node);
@@ -628,7 +601,7 @@ putCitrusInDom: (dataCitrus) => {
 	console.log("baaaah")
 	if(dataGrilled == ''){
 		var node = document.createElement("LI");                 // Create a <li> node
-		var textnode = document.createTextNode("CHEESE: Unfortunately we did not find a match with that alcohol content. Change your search (reload the page) and try again.");         // Create a text node
+		var textnode = document.createTextNode("GRILLED: Unfortunately we did not find a match with that alcohol content. Change your search (reload the page) and try again.");         // Create a text node
 		node.appendChild(textnode); 
 		node.setAttribute('class', 'node-class');                             // Append the text to <li>
 		document.getElementById("errorMsg").appendChild(node);     // Append <li> to <ul> with id="myList"
@@ -660,7 +633,20 @@ putCitrusInDom: (dataCitrus) => {
             grilledList.innerHTML = showHTML;
         	}
 		}
-	}
+	},
+
+addEvent: function(){
+// document.getElementById('foodBeer-btn').addEventListener('click', modulePattern.sortBeersByFlavour);
+document.getElementById('lightBeers-btn').addEventListener('click', modulePattern.getLightBeers);
+document.getElementById('mediumBeers-btn').addEventListener('click', modulePattern.getMediumBeers);
+document.getElementById('darkBeers-btn').addEventListener('click', modulePattern.getDarkBeers);
+document.getElementById('getAlcBeer').addEventListener('change', modulePattern.selectBeersByAlcoholContent);
+document.getElementById('getAllBeer').addEventListener('change', modulePattern.selectAllBeers);
+document.getElementById('getAlcBeerByFlavour').addEventListener('change', modulePattern.selectAlcoholContentAndFlavour);
+document.getElementById('search-btn').addEventListener('click', modulePattern.getBeerPrice);
+
+}
+
 };
 })(); 
 
