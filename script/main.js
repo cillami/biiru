@@ -35,7 +35,7 @@ getMediumBeers: function(){
 $(document).ajaxStart(function () {
 	var text = "Beers are loading, please wait..";
     loadingDiv.innerHTML += text;
-    $("#loading").show();
+    $("#loadingDiv").show();
 });
 
 var data = [];
