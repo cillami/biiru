@@ -124,7 +124,7 @@ $(document).ajaxStart(function () {
 });
 
 var data = [];
-$.get('https://api.punkapi.com/' + getAllBeers, (response) => { 
+$.get('https://api.punkapi.com/v2/beers?' + getAllBeers, (response) => { 
     data = response;
     //Only in the callback are we sure that data has been saved,
     //the anonym function will run on success, when the response has returned
