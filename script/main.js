@@ -79,36 +79,36 @@ getDarkBeers: function(){
 getBeerPrice: function() { 
 
 	$.ajax(
-	{
-    url: 'https://karlroos-systemet.p.mashape.com/product?limit=100&name=brewdog&order_by=name', // URL to the API
-    type: 'GET', // The HTTP Method, GET POST PUT DELETE etc
-    data: {}, // Additional parameters here
-    dataType: 'json',
-    ajaxStart: //loading indicator
-	$(document).ajaxStart(function () {
-	var text = "Beers are loading, please wait..";
-    loadingDiv.innerHTML += text;
-    $("#loading").show();
-	}),
-    success: function(data) {
-        //Change data.source to data.something , where something is whichever part of the object you want returned.
+		{
+	    url: 'https://karlroos-systemet.p.mashape.com/product?limit=100&name=brewdog&order_by=name', // URL to the API
+	    type: 'GET', // The HTTP Method, GET POST PUT DELETE etc
+	    data: {}, // Additional parameters here
+	    dataType: 'json',
+	    ajaxStart: //loading indicator
+		$(document).ajaxStart(function () {
+		var text = "Beers are loading, please wait..";
+	    loadingDiv.innerHTML += text;
+	    $("#loading").show();
+		}),
+	    success: function(data) {
+	        //Change data.source to data.something , where something is whichever part of the object you want returned.
 
-	    $(document).ajaxComplete(function () {
-	    $("#loadingDiv").hide();
+		    $(document).ajaxComplete(function () {
+		    $("#loadingDiv").hide();
 
-		});
-	    modulePattern.showPriceInDom(data);
-        },
+			});
+		    modulePattern.showPriceInDom(data);
+	        },
 
-	//ett annat sätt att alerta error
-	error: function(errorObject, statusText, errorThrown) {
-		alert("ERROR! \n \n" + errorThrown);
-	},
-	//för detta api behövs en nyckel som läggs i request headern 
-    beforeSend: function(xhr) {
-    xhr.setRequestHeader("X-Mashape-Authorization", "6myQMMIXtCmshRYsqqNr3ik67JNxp1JM1SIjsnsY9FE7luqhcI"); 
-    // Mashape key
-    }
+		//ett annat sätt att alerta error
+		error: function(errorObject, statusText, errorThrown) {
+			alert("ERROR! \n \n" + errorThrown);
+		},
+		//för detta api behövs en nyckel som läggs i request headern 
+	    beforeSend: function(xhr) {
+	    xhr.setRequestHeader("X-Mashape-Authorization", "6myQMMIXtCmshRYsqqNr3ik67JNxp1JM1SIjsnsY9FE7luqhcI"); 
+	    // Mashape key
+	    }
 	});
 },
 
@@ -138,7 +138,6 @@ getAllBeers: function(getAllBeers){
 		alert("Error");
 	});
 },
-
 
 selectBeersByAlcoholContent: function (choice) {
 	var getBeers = modulePattern.getBeersByAlcoholContent(choice.target.value);
