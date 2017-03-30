@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
   <title>AJAX and BEER</title>
+  <!-- ICONS -->
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 <!--     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet"> -->
   <link rel="stylesheet" href="css/main.css">
@@ -102,9 +105,9 @@
           <h4>EBC: Colour of beers</h4>
           The EBC unit informs the colour of the beer. The higher the EBC-value, the darker the beer. <br>
           Light beer: EBC < 15. Medium beer: EBC 15-50. Dark beer: EBC > 50<br> 
-          <button id="lightBeers-btn" class="all-btn">Light beer</button>
-          <button id="mediumBeers-btn" class="all-btn">Medium beer</button> 
-          <button id="darkBeers-btn" class="all-btn">Dark beer</button> 
+          <button id="lightBeers-btn" value="ebc_lt=15" onclick="modulePattern.getEbcValue(this.value)" class="all-btn">Light beer</button>
+          <button id="mediumBeers-btn" onclick="modulePattern.getEbcValue(this.value)" value="ebc_gt=15&ebc_lt=50" class="all-btn">Medium beer</button> 
+          <button id="darkBeers-btn" onclick="modulePattern.getEbcValue(this.value)" value="ebc_gt=50" class="all-btn">Dark beer</button> 
         </div>
 <!--           <button id="beers-btn" class="all-btn">Show all of 'em (p. 1)</button>  -->
 <hr class="style">
@@ -130,7 +133,13 @@
         <div id="loadingDiv" class="text-center">
         <img src="img/preloader_gif.gif" id="loading" alt="Page is loading..." style="display: none;" /><br>
         </div>
+<!--         <a href="#" class="align-content-right" id="top">PIL</a> -->
+        <a href="#top" class="arrow-class">
+<i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
+</a>
 
+
+ 
 
 
       </div> <!-- End right col -->
