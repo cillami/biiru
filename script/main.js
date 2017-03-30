@@ -4,75 +4,76 @@ const modulePattern = (function(){
 return {
 
 getLightBeers: function(){
-//loading indicator
-$(document).ajaxStart(function () {
-	var text = "Beers are loading, please wait..";
-    loadingDiv.innerHTML += text;
-    //img + text visible in html
-    $("#loading").show();
-});
-var data = [];
-//get request. The callback parameter response holds the content of the requested page
-$.get('https://api.punkapi.com/v2/beers?ebc_lt=15&page=1&per_page=80', (response) => { 
-    data = response;
-    //Only in the callback are we sure that data has been saved,
-    //the anonym function will run on success, when the response has returned
-
-    //loading img + text = hidden, when response is completed
-    $(document).ajaxComplete(function () {
-    $("#loadingDiv").hide();
+	//loading indicator
+	$(document).ajaxStart(function () {
+		var text = "Beers are loading, please wait..";
+	    loadingDiv.innerHTML += text;
+	    //img + text visible in html
+	    $("#loading").show();
 	});
-    modulePattern.putBeersInDom(data);
-//catches error, xhr = XMLHttpRequest Object  
-}).catch(function(xhr) {
-	console.log(xhr)
-    alert("ERROR! Something went wrong please try again. \n \n" + xhr.responseText);
-});
+	var data = [];
+	//get request. The callback parameter response holds the content of the requested page
+	$.get('https://api.punkapi.com/v2/beers?ebc_lt=15&page=1&per_page=80', (response) => { 
+	    data = response;
+	    //Only in the callback are we sure that data has been saved,
+	    //the anonym function will run on success, when the response has returned
+
+	    //loading img + text = hidden, when response is completed
+	    $(document).ajaxComplete(function () {
+	    $("#loadingDiv").hide();
+		});
+	    modulePattern.putBeersInDom(data);
+	//catches error, xhr = XMLHttpRequest Object  
+	}).catch(function(xhr) {
+		console.log(xhr)
+	    alert("ERROR! Something went wrong please try again. \n \n" + xhr.responseText);
+	});
 },
 
 getMediumBeers: function(){
 
-$(document).ajaxStart(function () {
-	var text = "Beers are loading, please wait..";
-    loadingDiv.innerHTML += text;
-    $("#loadingDiv").show();
-});
+	$(document).ajaxStart(function () {
+		var text = "Beers are loading, please wait..";
+	    loadingDiv.innerHTML += text;
+	    $("#loadingDiv").show();
+	});
 
-var data = [];
-$.get('https://api.punkapi.com/v2/beers?ebc_gt=15&ebc_lt=50&page=1&per_page=80', (response) => { 
-    data = response;
-    //Only in the callback are we sure that data has been saved,
-    //the anonym function will run on success, when the response has returned     
-    $(document).ajaxComplete(function () {
-    $("#loadingDiv").hide();
-});
-    modulePattern.putBeersInDom(data);
-}).catch(function(xhr) {
-	console.log(xhr)
-    alert("ERROR! Something went wrong please try again. \n \n" + xhr.responseText);
-});
+	var data = [];
+	$.get('https://api.punkapi.com/v2/beers?ebc_gt=15&ebc_lt=50&page=1&per_page=80', (response) => { 
+	    data = response;
+	    //Only in the callback are we sure that data has been saved,
+	    //the anonym function will run on success, when the response has returned     
+	    $(document).ajaxComplete(function () {
+	    $("#loadingDiv").hide();
+	});
+	    modulePattern.putBeersInDom(data);
+
+	}).catch(function(xhr) {
+		console.log(xhr)
+	    alert("ERROR! Something went wrong please try again. \n \n" + xhr.responseText);
+	});
 },
 
 getDarkBeers: function(){
 
-$(document).ajaxStart(function () {
-	var text = "Beers are loading, please wait..";
-    loadingDiv.innerHTML += text;
-    $("#loading").show();
-});
+	$(document).ajaxStart(function () {
+		var text = "Beers are loading, please wait..";
+	    loadingDiv.innerHTML += text;
+	    $("#loading").show();
+	});
 
-var data = [];
-$.get('https://api.punkapi.com/v2/beers?ebc_gt=50&page=1&per_page=80', (response) => { 
-    data = response;
-    //Only in the callback are we sure that data has been saved,
-    //the anonym function will run on success, when the response has returned
-    $(document).ajaxComplete(function () {
-    $("#loadingDiv").hide();
-});
-    modulePattern.putBeersInDom(data);
-}).catch(function(error){
-	alert("Error");
-});
+	var data = [];
+	$.get('https://api.punkapi.com/v2/beers?ebc_gt=50&page=1&per_page=80', (response) => { 
+	    data = response;
+	    //Only in the callback are we sure that data has been saved,
+	    //the anonym function will run on success, when the response has returned
+	    $(document).ajaxComplete(function () {
+	    $("#loadingDiv").hide();
+	});
+	    modulePattern.putBeersInDom(data);
+	}).catch(function(error){
+		alert("Error");
+	});
 },
 
 getBeerPrice: function() { 
@@ -108,33 +109,34 @@ getBeerPrice: function() {
     xhr.setRequestHeader("X-Mashape-Authorization", "6myQMMIXtCmshRYsqqNr3ik67JNxp1JM1SIjsnsY9FE7luqhcI"); 
     // Mashape key
     }
-});
+	});
 },
 
 //selector that gets user choice
 selectAllBeers: function (choice) {
     var getAllBeers = modulePattern.getAllBeers(choice.target.value);        
 },
+
 getAllBeers: function(getAllBeers){
 
-$(document).ajaxStart(function () {
-	var text = "Beers are loading, please wait..";
-    loadingDiv.innerHTML += text;
-    $("#loading").show();
-});
+	$(document).ajaxStart(function () {
+		var text = "Beers are loading, please wait..";
+	    loadingDiv.innerHTML += text;
+	    $("#loading").show();
+	});
 
-var data = [];
-$.get('https://api.punkapi.com/v2/beers?' + getAllBeers, (response) => { 
-    data = response;
-    //Only in the callback are we sure that data has been saved,
-    //the anonym function will run on success, when the response has returned
-    $(document).ajaxComplete(function () {
-    $("#loadingDiv").hide();
-});
-    modulePattern.putBeersInDom(data);
-}).catch(function(error){
-	alert("Error");
-});
+	var data = [];
+	$.get('https://api.punkapi.com/v2/beers?' + getAllBeers, (response) => { 
+	    data = response;
+	    //Only in the callback are we sure that data has been saved,
+	    //the anonym function will run on success, when the response has returned
+	    $(document).ajaxComplete(function () {
+	    $("#loadingDiv").hide();
+	});
+	    modulePattern.putBeersInDom(data);
+	}).catch(function(error){
+		alert("Error");
+	});
 },
 
 
@@ -145,25 +147,25 @@ selectBeersByAlcoholContent: function (choice) {
 
 getBeersByAlcoholContent: function(getBeers){
 
-$(document).ajaxStart(function () {
-	var text = "Beers are loading, please wait..";
-    loadingDiv.innerHTML += text;
-    $("#loading").show();
-});
+	$(document).ajaxStart(function () {
+		var text = "Beers are loading, please wait..";
+	    loadingDiv.innerHTML += text;
+	    $("#loading").show();
+	});
 
-var data = [];
-$.get('https://api.punkapi.com/v2/beers?' + getBeers, (response) => { 
-    data = response;
-    //Only in the callback are we sure that data has been saved,
-    //the anonym function will run on success, when the response has returned   
-    $(document).ajaxComplete(function () {
-    $("#loadingDiv").hide();
-});
-    modulePattern.putBeersInDom(data);
+	var data = [];
+	$.get('https://api.punkapi.com/v2/beers?' + getBeers, (response) => { 
+	    data = response;
+	    //Only in the callback are we sure that data has been saved,
+	    //the anonym function will run on success, when the response has returned   
+	    $(document).ajaxComplete(function () {
+	    $("#loadingDiv").hide();
+	});
+	    modulePattern.putBeersInDom(data);
 
-}).catch(function(error){
-	alert("Error");
-});
+	}).catch(function(error){
+		alert("Error");
+	});
 },
 
 //Before the get request we have to check what alcohol content the search is going to be restrained to
@@ -174,180 +176,180 @@ selectAlcoholContentAndFlavour: function (choice) {
 //Then we have to see which checkboxes are checked and then we can do the get request
 sortBeersByFlavour: function(getBeersByFlavour){
 
-//get checkboxes
-var checked = document.getElementsByClassName("checkIt");
-var checkedResult = [];
-//checks if some of the 6 checkboxes are checked
-//pushes them into an array to be used later
-for(var i = 0; i < 6; i++){
-	if(checked[i].checked == true){
-		checkedResult.push(checked[i].value);		
-	}
-	 
-}
+	//get checkboxes
+	var checked = document.getElementsByClassName("checkIt");
+	var checkedResult = [];
+	//checks if some of the 6 checkboxes are checked
+	//pushes them into an array to be used later
+	for(var i = 0; i < 6; i++){
+		if(checked[i].checked == true){
+			checkedResult.push(checked[i].value);		
+		}	 
+	}	
 
- //controls if the user has checked a checkbox before continuing, if not show error msg 
-if(checkedResult == ''){
-	var node = document.createElement("LI");  // Create a <li> node
-	var textnode = document.createTextNode("Please choose a flavour before continuing! (reload the page)");  // Create a text node
-	node.appendChild(textnode); // Append the text to <li>
-	node.setAttribute('class', 'node-class'); 
-	document.getElementById("error-foodList").appendChild(node);
-	} 
-else {
-	
-	//forEach loops through the array of choices (checked checkboxes) made by the user
+	 //controls if the user has checked a checkbox before continuing, if not show error msg 
+	if(checkedResult == ''){
+		var node = document.createElement("LI");  // Create a <li> node
+		var textnode = document.createTextNode("Please choose a flavour before continuing! (reload the page)");  // Create a text node
+		node.appendChild(textnode); // Append the text to <li>
+		node.setAttribute('class', 'node-class'); 
+		document.getElementById("error-foodList").appendChild(node);
+		} 
+	else {
+		
+		//forEach loops through the array of choices (checked checkboxes) made by the user
 	checkedResult.forEach(function(element){
+		//checks if the array contains the word spicy
+		if(element === "spicy"){
 
-	//checks if the array contains the word spicy
-if(element === "spicy"){
+			$(document).ajaxStart(function () {
+				var text = "Beers are loading, please wait..";
+			    loadingDiv.innerHTML += text;
+			    $("#loading").show();
+			});
 
-	$(document).ajaxStart(function () {
-		var text = "Beers are loading, please wait..";
-	    loadingDiv.innerHTML += text;
-	    $("#loading").show();
-	});
+		//if spicy matches the user choice the get request activates, and the alcohol-content-selctor-value adds to the request
+			$.get('https://api.punkapi.com/v2/beers?food=spicy&page=1&per_page=80&' + getBeersByFlavour, (response) => { 
+			    var dataSpicy = [];
+			    dataSpicy = response;
+			    //Only in the callback are we sure that data has been saved,
+			    //the anonym function will run on success, when the response has returned   
+			    $(document).ajaxComplete(function () {
+		    	$("#loadingDiv").hide();
+				});
+				modulePattern.putSpicyInDom(dataSpicy);
 
-//if spicy matches the user choice the get request activates, and the alcohol-content-selctor-value adds to the request
-	$.get('https://api.punkapi.com/v2/beers?food=spicy&page=1&per_page=80&' + getBeersByFlavour, (response) => { 
-	    var dataSpicy = [];
-	    dataSpicy = response;
-	    //Only in the callback are we sure that data has been saved,
-	    //the anonym function will run on success, when the response has returned   
-	    $(document).ajaxComplete(function () {
-    	$("#loadingDiv").hide();
-		});
-		modulePattern.putSpicyInDom(dataSpicy);
+			}).catch(function(error){
+				alert("Error")
+			});
+			}
 
-	}).catch(function(error){
-		alert("Error")
-	});
-	}
+		if(element === "chocolate") {
 
-if(element === "chocolate") {
+				$(document).ajaxStart(function () {
+				var text = "Beers are loading, please wait..";
+			    loadingDiv.innerHTML += text;
+			    $("#loading").show();
+			});
 
-		$(document).ajaxStart(function () {
-		var text = "Beers are loading, please wait..";
-	    loadingDiv.innerHTML += text;
-	    $("#loading").show();
-	});
+			$.get('https://api.punkapi.com/v2/beers?food=chocolate&page=1&per_page=80&' + getBeersByFlavour, (response) => { 
+			    var dataChocolate = [];
+			    dataChocolate = response;
+			    //Only in the callback are we sure that data has been saved,
+			    //the anonym function will run on success, when the response has returned 
+			    $(document).ajaxComplete(function () {
+		    	$("#loadingDiv").hide();
+				});
+			     modulePattern.putChocolateInDom(dataChocolate);
+			}).catch(function(error){
+				alert("Error");
+			});
 
-	$.get('https://api.punkapi.com/v2/beers?food=chocolate&page=1&per_page=80&' + getBeersByFlavour, (response) => { 
-	    var dataChocolate = [];
-	    dataChocolate = response;
-	    //Only in the callback are we sure that data has been saved,
-	    //the anonym function will run on success, when the response has returned 
-	    $(document).ajaxComplete(function () {
-    	$("#loadingDiv").hide();
-		});
-	     modulePattern.putChocolateInDom(dataChocolate);
-	}).catch(function(error){
-		alert("Error");
-	});
+			}
 
-	}
+		if(element === "citrus"){
+				$(document).ajaxStart(function () {
+				var text = "Beers are loading, please wait..";
+			    loadingDiv.innerHTML += text;
+			    $("#loading").show();
+			});
 
-if(element === "citrus"){
-		$(document).ajaxStart(function () {
-		var text = "Beers are loading, please wait..";
-	    loadingDiv.innerHTML += text;
-	    $("#loading").show();
-	});
+			$.get('https://api.punkapi.com/v2/beers?food=citrus&page=1&per_page=80&' + getBeersByFlavour, (response) => { 
+			    var dataCitrus = [];
+			    dataCitrus = response;
+			    //Only in the callback are we sure that data has been saved,
+			    //the anonym function will run on success, when the response has returned 
+			    $(document).ajaxComplete(function () {
+		    	$("#loadingDiv").hide();
+				});
+			    modulePattern.putCitrusInDom(dataCitrus);
 
-	$.get('https://api.punkapi.com/v2/beers?food=citrus&page=1&per_page=80&' + getBeersByFlavour, (response) => { 
-	    var dataCitrus = [];
-	    dataCitrus = response;
-	    //Only in the callback are we sure that data has been saved,
-	    //the anonym function will run on success, when the response has returned 
-	    $(document).ajaxComplete(function () {
-    	$("#loadingDiv").hide();
-		});
-	    modulePattern.putCitrusInDom(dataCitrus);
+			}).catch(function(error){
+				alert("Error");
+			});
+			}
 
-	}).catch(function(error){
-		alert("Error");
-	});
-	}
+		if(element === "curry"){
+				$(document).ajaxStart(function () {
+				var text = "Beers are loading, please wait..";
+			    loadingDiv.innerHTML += text;
+			    $("#loading").show();
+			});
 
-if(element === "curry"){
-		$(document).ajaxStart(function () {
-		var text = "Beers are loading, please wait..";
-	    loadingDiv.innerHTML += text;
-	    $("#loading").show();
-	});
+			$.get('https://api.punkapi.com/v2/beers?food=curry&page=1&per_page=80&' + getBeersByFlavour, (response) => { 
+			    var dataCurry = [];
+			    dataCurry = response;
+			    //Only in the callback are we sure that data has been saved,
+			    //the anonym function will run on success, when the response has returned 
+			    $(document).ajaxComplete(function () {
+		    	$("#loadingDiv").hide();
+				});
+			    modulePattern.putCurryInDom(dataCurry);
 
-	$.get('https://api.punkapi.com/v2/beers?food=curry&page=1&per_page=80&' + getBeersByFlavour, (response) => { 
-	    var dataCurry = [];
-	    dataCurry = response;
-	    //Only in the callback are we sure that data has been saved,
-	    //the anonym function will run on success, when the response has returned 
-	    $(document).ajaxComplete(function () {
-    	$("#loadingDiv").hide();
-		});
-	    modulePattern.putCurryInDom(dataCurry);
+			}).catch(function(error){
+				alert("Error");
+			});
+			}
+		if(element === "cheese"){
 
-	}).catch(function(error){
-		alert("Error");
-	});
-	}
-if(element === "cheese"){
+			$(document).ajaxStart(function () {
+				var text = "Beers are loading, please wait..";
+			    loadingDiv.innerHTML += text;
+			    $("#loading").show();
+			});
+			$.get('https://api.punkapi.com/v2/beers?food=cheese&page=1&per_page=80&' + getBeersByFlavour, (response) => { 
+			    var dataCheese = [];
+			    dataCheese = response;
+			    //Only in the callback are we sure that data has been saved,
+			    //the anonym function will run on success, when the response has returned 
+			    $(document).ajaxComplete(function () {
+		    	$("#loadingDiv").hide();
+				});
+			    modulePattern.putCheeseInDom(dataCheese);
 
-	$(document).ajaxStart(function () {
-		var text = "Beers are loading, please wait..";
-	    loadingDiv.innerHTML += text;
-	    $("#loading").show();
-	});
-	$.get('https://api.punkapi.com/v2/beers?food=cheese&page=1&per_page=80&' + getBeersByFlavour, (response) => { 
-	    var dataCheese = [];
-	    dataCheese = response;
-	    //Only in the callback are we sure that data has been saved,
-	    //the anonym function will run on success, when the response has returned 
-	    $(document).ajaxComplete(function () {
-    	$("#loadingDiv").hide();
-		});
-	    modulePattern.putCheeseInDom(dataCheese);
+			}).catch(function(error){
+				alert("Error");
+			});
+			}
+		if(element === "grilled"){
 
-	}).catch(function(error){
-		alert("Error");
-	});
-	}
-if(element === "grilled"){
+			$(document).ajaxStart(function () {
+				var text = "Beers are loading, please wait..";
+			    loadingDiv.innerHTML += text;
+			    $("#loading").show();
+			});
+			$.get('https://api.punkapi.com/v2/beers?food=grilled&page=1&per_page=80&' + getBeersByFlavour, (response) => { 
+			    var dataGrilled = [];
+			    dataGrilled = response;
+			    //Only in the callback are we sure that data has been saved,
+			    //the anonym function will run on success, when the response has returned 
+			    $(document).ajaxComplete(function () {
+		    	$("#loadingDiv").hide();
+				});
+			    modulePattern.putGrilledInDom(dataGrilled);
 
-	$(document).ajaxStart(function () {
-		var text = "Beers are loading, please wait..";
-	    loadingDiv.innerHTML += text;
-	    $("#loading").show();
-	});
-	$.get('https://api.punkapi.com/v2/beers?food=grilled&page=1&per_page=80&' + getBeersByFlavour, (response) => { 
-	    var dataGrilled = [];
-	    dataGrilled = response;
-	    //Only in the callback are we sure that data has been saved,
-	    //the anonym function will run on success, when the response has returned 
-	    $(document).ajaxComplete(function () {
-    	$("#loadingDiv").hide();
-		});
-	    modulePattern.putGrilledInDom(dataGrilled);
-
-	}).catch(function(error){
-		alert("Error");
-	});
-	}
-}); //forEach
-} //else-statment
+			}).catch(function(error){
+				alert("Error");
+			});
+			}
+		}); //forEach
+	} //else-statment
 },
 
 showPriceInDom: (data) => {
 	console.log("baaaah")
 	if(data == ''){
-		 console.log("Errorssss")
+		console.log("Errorssss")
 		let error = document.getElementById("errorMsg");
 
-            var showError = `<li>Unfortunately we did not find any match. Change your search and try again.</li>`;
-            errorMsg.innerHTML = showError;   	
+        var showError = `<li>Unfortunately we did not find any match. Change your search and try again.</li>`;
+        errorMsg.innerHTML = showError;   	
 	}
+	
 	else{
 		let beer = document.getElementById("beerList");
         let showHTML = "";
+            
             for (var i = 0; i < data.length ;i++){
                 showHTML += 
                 `
@@ -367,12 +369,10 @@ showPriceInDom: (data) => {
             beerList.innerHTML = showHTML;
         	}
 		}
-	},
+},
 
 putBeersInDom: (data) => {
 	
-	console.log("putBeersInDom")
-
 		let beer = document.getElementById("beerList");
         let showHTML = "";
             for (var i = 0; i < data.length ;i++){
@@ -395,7 +395,7 @@ putBeersInDom: (data) => {
                 </div>`;
             beerList.innerHTML = showHTML;
         	}
-	},
+},
 
 putChocolateInDom: (dataChocolate) => {
 
@@ -437,9 +437,8 @@ putChocolateInDom: (dataChocolate) => {
                 </div>`;
             chocolateList.innerHTML = showHTML;
         	}
- 
 		}
-	},
+},
 
 putSpicyInDom: (dataSpicy) => {
 	console.log("DOM")
@@ -477,8 +476,8 @@ putSpicyInDom: (dataSpicy) => {
             spicyList.innerHTML = showHTML;
         	}
 		}
-	},
-	putCurryInDom: (dataCurry) => {
+},
+putCurryInDom: (dataCurry) => {
 	console.log("DOM")
 	if(dataCurry == ''){
 		var node = document.createElement("LI");                 // Create a <li> node
@@ -515,7 +514,7 @@ putSpicyInDom: (dataSpicy) => {
 	},
 
 putCitrusInDom: (dataCitrus) => {
-	console.log("DOM")
+
 	if(dataCitrus == ''){
 		var node = document.createElement("LI");                 // Create a <li> node
 		var textnode = document.createTextNode("CITRUS: Unfortunately we did not find a match with that alcohol content. Change your search (reload the page) and try again.");         // Create a text node
@@ -551,8 +550,8 @@ putCitrusInDom: (dataCitrus) => {
             citrusList.innerHTML = showHTML;
         	}
 		}
-	},
-	putCheeseInDom: (dataCheese) => {
+},
+putCheeseInDom: (dataCheese) => {
 	console.log("DOM")
 	if(dataCheese == ''){
 		var node = document.createElement("LI");                 // Create a <li> node
@@ -590,8 +589,9 @@ putCitrusInDom: (dataCitrus) => {
             cheeseList.innerHTML = showHTML;
         	}
 		}
-	},
-		putGrilledInDom: (dataGrilled) => {
+},
+
+putGrilledInDom: (dataGrilled) => {
 	console.log("DOM")
 	if(dataGrilled == ''){
 		var node = document.createElement("LI");                 // Create a <li> node
@@ -627,22 +627,22 @@ putCitrusInDom: (dataCitrus) => {
             grilledList.innerHTML = showHTML;
         	}
 		}
-	},
+},
 
 addEvent: function(){
-// document.getElementById('foodBeer-btn').addEventListener('click', modulePattern.sortBeersByFlavour);
-document.getElementById('lightBeers-btn').addEventListener('click', modulePattern.getLightBeers);
-document.getElementById('mediumBeers-btn').addEventListener('click', modulePattern.getMediumBeers);
-document.getElementById('darkBeers-btn').addEventListener('click', modulePattern.getDarkBeers);
-document.getElementById('getAlcBeer').addEventListener('change', modulePattern.selectBeersByAlcoholContent);
-document.getElementById('getAllBeer').addEventListener('change', modulePattern.selectAllBeers);
-document.getElementById('getAlcBeerByFlavour').addEventListener('change', modulePattern.selectAlcoholContentAndFlavour);
-document.getElementById('search-btn').addEventListener('click', modulePattern.getBeerPrice);
+	// document.getElementById('foodBeer-btn').addEventListener('click', modulePattern.sortBeersByFlavour);
+	document.getElementById('lightBeers-btn').addEventListener('click', modulePattern.getLightBeers);
+	document.getElementById('mediumBeers-btn').addEventListener('click', modulePattern.getMediumBeers);
+	document.getElementById('darkBeers-btn').addEventListener('click', modulePattern.getDarkBeers);
+	document.getElementById('getAlcBeer').addEventListener('change', modulePattern.selectBeersByAlcoholContent);
+	document.getElementById('getAllBeer').addEventListener('change', modulePattern.selectAllBeers);
+	document.getElementById('getAlcBeerByFlavour').addEventListener('change', modulePattern.selectAlcoholContentAndFlavour);
+	document.getElementById('search-btn').addEventListener('click', modulePattern.getBeerPrice);
 
 }
 
 };
-})(); 
+})(); //modulePattern end
 
 modulePattern.addEvent();
 // console.log(modulePattern.getFood());
