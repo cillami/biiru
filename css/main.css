@@ -13,6 +13,21 @@ body {
 .row {
   margin-top: 7rem; }
 
+/*#top{
+    width: 100px;
+    height: 50px;
+    position: fixed;
+    bottom: 0px;
+    right: 20px;
+}*/
+.arrow-class {
+  color: black !important;
+  position: fixed;
+  font-size: 2rem;
+  bottom: 0;
+  right: 0;
+  padding: 0 1rem 15rem 0; }
+
 /*------BUTTONS------*/
 .all-btn {
   padding: 0.1rem;
@@ -139,18 +154,17 @@ hr.style {
     width: 768px !important;
     max-width: 100% !important;
     padding-left: 2rem !important;
-    margin-left: 0rem !important; } }
+    margin-left: 0rem !important; }
+
+  .arrow-class {
+    font-size: 2.5rem;
+    padding: 0 0.3rem 5rem 0; } }
 @media (max-width: 900px) {
   .container {
     width: 900px !important;
     max-width: 100% !important;
     padding-left: 2rem !important;
     margin-left: 0rem !important; } }
-/*@media (min-width: 1250px){
-		.header-text1{
-		display:none;
-	} 
-}*/
 @media (max-width: 1250px) {
   .header-text {
     display: none; } }
