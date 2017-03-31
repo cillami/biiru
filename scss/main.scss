@@ -24,13 +24,19 @@ body{
     right: 20px;
 }*/
 
-.arrow-class {
-    color:black !important;
+/*.arrow-class {
     position:fixed;
-    font-size:2rem;
     bottom:0;
     right:0;
-    padding:0 1rem 15rem 0;
+     
+}*/
+.arrow-img {
+  height:auto;
+  width:3rem;
+    position:fixed;
+    bottom:0;
+    right:0;
+    padding: 0 0.3rem 5rem 0;
 }
 
 /*------BUTTONS------*/
@@ -141,7 +147,7 @@ float:right;
 }
 
 .node-class{
-  padding-bottom: 1rem;
+  margin-top: 8rem;
 }
 
 /*----- DOM -----*/
