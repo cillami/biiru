@@ -31,6 +31,6 @@ Det tog lång tid att komma underfund med vad för sorts API som jag ville anvä
 ## To do-lista
 * Vissa properties från APIt är null, den datan vill jag inte visa i min HTML
 * Vid ett tillfälle rensas inte sidan på data när ett nytt anrop görs
-* 
+* Korta ner delar av koden
 * 
 
