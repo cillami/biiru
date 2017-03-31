@@ -59,14 +59,11 @@ getBeerPrice: function() {
 		}),
 	    success: function(data) {
 	        // hantera data här
-
 		    $(document).ajaxComplete(function () {
 		    $("#loadingDiv").hide();
-
 			});
 		    modulePattern.showPriceInDom(data);
 	        },
-
 		//ett annat sätt att alerta error
 		error: function(errorObject, statusText, errorThrown) {
 			alert("ERROR! \n \n" + errorThrown);
@@ -85,11 +82,9 @@ selectAllBeers: function (choice) {
 },
 
 getAllBeers: function(getAllBeers){
-
 	$(document).ajaxStart(function () {
 		modulePattern.loading();
 	});
-
 	var data = [];
 	$.get('https://api.punkapi.com/v2/beers?' + getAllBeers, (response) => { 
 	    data = response;
@@ -105,16 +100,13 @@ getAllBeers: function(getAllBeers){
 },
 
 selectBeersByAlcoholContent: function (choice) {
-	var getBeers = modulePattern.getBeersByAlcoholContent(choice.target.value);
-            
+	var getBeers = modulePattern.getBeersByAlcoholContent(choice.target.value);        
  },
 
 getBeersByAlcoholContent: function (getBeers){
-
 	$(document).ajaxStart(function () {
 		modulePattern.loading();
 	});
-
 	var data = [];
 	$.get('https://api.punkapi.com/v2/beers?' + getBeers, (response) => { 
 	    data = response;
@@ -124,12 +116,10 @@ getBeersByAlcoholContent: function (getBeers){
 	    $("#loadingDiv").hide();
 	});
 	    modulePattern.putBeersInDom(data);
-
 	}).catch(function(error){
 		alert("Error");
 	});
 },
-
 //Before the get request we have to check what alcohol content the search is going to be restrained to
 selectAlcoholContentAndFlavour: function (choice) {
     var getBeersByFlavour = modulePattern.sortBeersByFlavour(choice.target.value);          
@@ -137,7 +127,6 @@ selectAlcoholContentAndFlavour: function (choice) {
 
 //Then we have to see which checkboxes are checked and then we can do the get request
 sortBeersByFlavour: function(getBeersByFlavour){
-
 	//get checkboxes
 	var checked = document.getElementsByClassName("checkIt");
 	var checkedResult = [];
@@ -148,7 +137,6 @@ sortBeersByFlavour: function(getBeersByFlavour){
 			checkedResult.push(checked[i].value);		
 		}	 
 	}	
-
 	 //controls if the user has checked a checkbox before continuing, if not show error msg 
 	if(checkedResult == ''){
 		var node = document.createElement("LI");  // Create a <li> node
@@ -158,19 +146,16 @@ sortBeersByFlavour: function(getBeersByFlavour){
 		document.getElementById("error-foodList").appendChild(node);
 		} 
 	else {
-		
 		//forEach loops through the array of choices (checked checkboxes) made by the user
 	checkedResult.forEach(function(element){
 		//checks if the array contains the word spicy
 		if(element === "spicy"){
-
 			$(document).ajaxStart(function () {
 				modulePattern.loading();
 			});
-
 		//if spicy matches the user choice the get request activates, and the alcohol-content-selctor-value adds to the request
-			$.get('https://api.punkapi.com/v2/beers?food=spicy&page=1&per_page=80&' + getBeersByFlavour, (response) => { 
-			    var dataSpicy = [];
+				var dataSpicy = [];
+			$.get('https://api.punkapi.com/v2/beers?food=spicy&' + getBeersByFlavour, (response) => { 
 			    dataSpicy = response;
 			    //Only in the callback are we sure that data has been saved,
 			    //the anonym function will run on success, when the response has returned   
@@ -185,13 +170,11 @@ sortBeersByFlavour: function(getBeersByFlavour){
 			}
 
 		if(element === "chocolate") {
-
 				$(document).ajaxStart(function () {
 					modulePattern.loading();
 			});
-
-			$.get('https://api.punkapi.com/v2/beers?food=chocolate&page=1&per_page=80&' + getBeersByFlavour, (response) => { 
 			    var dataChocolate = [];
+			$.get('https://api.punkapi.com/v2/beers?food=chocolate&' + getBeersByFlavour, (response) => { 
 			    dataChocolate = response;
 			    //Only in the callback are we sure that data has been saved,
 			    //the anonym function will run on success, when the response has returned 
@@ -199,6 +182,7 @@ sortBeersByFlavour: function(getBeersByFlavour){
 		    	$("#loadingDiv").hide();
 				});
 			     modulePattern.putChocolateInDom(dataChocolate);
+
 			}).catch(function(error){
 				alert("Error");
 			});
@@ -209,9 +193,8 @@ sortBeersByFlavour: function(getBeersByFlavour){
 				$(document).ajaxStart(function () {
 					modulePattern.loading();
 			});
-
-			$.get('https://api.punkapi.com/v2/beers?food=citrus&page=1&per_page=80&' + getBeersByFlavour, (response) => { 
 			    var dataCitrus = [];
+			$.get('https://api.punkapi.com/v2/beers?food=citrus&' + getBeersByFlavour, (response) => { 
 			    dataCitrus = response;
 			    //Only in the callback are we sure that data has been saved,
 			    //the anonym function will run on success, when the response has returned 
@@ -229,9 +212,8 @@ sortBeersByFlavour: function(getBeersByFlavour){
 				$(document).ajaxStart(function () {
 					modulePattern.loading();
 			});
-
-			$.get('https://api.punkapi.com/v2/beers?food=curry&page=1&per_page=80&' + getBeersByFlavour, (response) => { 
 			    var dataCurry = [];
+			$.get('https://api.punkapi.com/v2/beers?food=curry&' + getBeersByFlavour, (response) => { 
 			    dataCurry = response;
 			    //Only in the callback are we sure that data has been saved,
 			    //the anonym function will run on success, when the response has returned 
@@ -249,7 +231,8 @@ sortBeersByFlavour: function(getBeersByFlavour){
 			$(document).ajaxStart(function () {
 				modulePattern.loading();
 			});
-			$.get('https://api.punkapi.com/v2/beers?food=cheese&page=1&per_page=80&' + getBeersByFlavour, (response) => { 
+			    var dataCheese = [];
+			$.get('https://api.punkapi.com/v2/beers?food=cheese&' + getBeersByFlavour, (response) => { 
 			    var dataCheese = [];
 			    dataCheese = response;
 			    //Only in the callback are we sure that data has been saved,
@@ -268,8 +251,8 @@ sortBeersByFlavour: function(getBeersByFlavour){
 			$(document).ajaxStart(function () {
 				modulePattern.loading();
 			});
-			$.get('https://api.punkapi.com/v2/beers?food=grilled&page=1&per_page=80&' + getBeersByFlavour, (response) => { 
-			    var dataGrilled = [];
+			var dataGrilled = [];
+			$.get('https://api.punkapi.com/v2/beers?food=grilled&' + getBeersByFlavour, (response) => { 
 			    dataGrilled = response;
 			    //Only in the callback are we sure that data has been saved,
 			    //the anonym function will run on success, when the response has returned 
@@ -287,16 +270,7 @@ sortBeersByFlavour: function(getBeersByFlavour){
 },
 
 showPriceInDom: (data) => {
-	console.log("baaaah")
-	if(data == ''){
-		console.log("Errorssss")
-		let error = document.getElementById("errorMsg");
 
-        var showError = `<li>Unfortunately we did not find any match. Change your search and try again.</li>`;
-        errorMsg.innerHTML = showError;   	
-	}
-	
-	else{
 		let beer = document.getElementById("beerList");
         let showHTML = "";
             
@@ -318,7 +292,6 @@ showPriceInDom: (data) => {
                 </div>`;
             beerList.innerHTML = showHTML;
         	}
-		}
 },
 
 putBeersInDom: (data) => {
@@ -348,10 +321,8 @@ putBeersInDom: (data) => {
 },
 
 putChocolateInDom: (dataChocolate) => {
-
 	if(dataChocolate == ''){
-
-		var node = document.createElement("LI");                // Create a <li> node
+		var node = document.createElement("LI");  // Create a <li> node
 		var textnode = document.createTextNode("CHOCOLATE: Unfortunately we did not find a match with that alcohol content. Change your search (reload the page) and try again.");         // Create a text node
 		node.appendChild(textnode); // Append the text to <li>
 		node.setAttribute('class', 'node-class'); 
@@ -571,45 +542,6 @@ putGrilledInDom: (dataGrilled) => {
         	}
 		}
 },
-
-// putFlavoursInDom: (data) => {
-// 	console.log("DOM")
-// 	if(dataGrilled == ''){
-// 		var node = document.createElement("LI");                 // Create a <li> node
-// 		var textnode = document.createTextNode("GRILLED: Unfortunately we did not find a match with that alcohol content. Change your search (reload the page) and try again.");         // Create a text node
-// 		node.appendChild(textnode); 
-// 		node.setAttribute('class', 'node-class');                             // Append the text to <li>
-// 		document.getElementById("errorMsg").appendChild(node);   
-
-// 	}
-// 	else{
-// 		let beer = document.getElementById("grilledList");
-//         let showHTML = "";
-
-//  			for (var i = 0; i < dataGrilled.length; i++) {
-//  				console.log(dataGrilled);
-//                 showHTML += 
-//                 `
-//                 <div class="dom-wrapper">
-//                 	<div class="dom-left">
-//                 		<img src="${dataGrilled[i].image_url}" class="beer-img"><br>
-//                 	</div>
-// 				<div class="dom-right">
-// 	                <h4>${dataGrilled[i].name}</h4>
-// 	                Alcohol: ${dataGrilled[i].abv}%<br>
-// 					 <p><h5>Food pairing </h5>
-// 					 Click on the links to find recipes!<br>
-// 					 1. <a href="https://www.google.se/#q=${dataGrilled[i].food_pairing[0]}" target="_blank">${dataGrilled[i].food_pairing[0]}</a><br>
-// 					 2. <a href="https://www.google.se/#q=${dataGrilled[i].food_pairing[1]}" target="_blank">${dataGrilled[i].food_pairing[1]}</a><br>
-// 					 3. <a href="https://www.google.se/#q=${dataGrilled[i].food_pairing[2]}" target="_blank">${dataGrilled[i].food_pairing[2]}</a><br>
-         
-//                 </div>
-//                 </div>`;
-//             grilledList.innerHTML = showHTML;
-//         	}
-// 		}
-// },
-
 addEvent: function(){
 	document.getElementById('getAlcBeer').addEventListener('change', modulePattern.selectBeersByAlcoholContent);
 	document.getElementById('getAllBeer').addEventListener('change', modulePattern.selectAllBeers);
@@ -621,8 +553,3 @@ addEvent: function(){
 })(); //modulePattern end
 
 modulePattern.addEvent();
-// console.log(modulePattern.getFood());
-
-//egen funktion loading
-//if spicy lägg till den listan etc en funktion för DOM
-//fixedknapp 
